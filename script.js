@@ -1,19 +1,25 @@
-// Handle Scan Waste image upload + preview
-document.getElementById("wasteInput").addEventListener("change", function () {
-  const file = this.files[0];
-  const preview = document.getElementById("preview");
+document.getElementById("scanBtn").onclick = () => {
+  document.getElementById("imageInput").click();
+};
 
-  if (file) {
-    const reader = new FileReader();
-    reader.onload = function (e) {
-      preview.src = e.target.result;
-      preview.style.display = "block";
-    };
-    reader.readAsDataURL(file);
-  }
-});
+document.getElementById("imageInput").onchange = async (event) => {
+  const file = event.target.files[0];
+  if (!file) return;
 
-// Button alerts
+  const formData = new FormData();
+  formData.append("image", file);
+
+  document.getElementById("result").innerText = "🧠 Scanning...";
+
+  const response = await fetch("http://localhost:3000/scan", {
+    method: "POST",
+    body: formData,
+  });
+
+  const data = await response.json();
+  document.getElementById("result").innerText = `📦 AI thinks it's: ${data.label || "unknown item"}`;
+};
+
 document.getElementById("suggestBtn").onclick = () => {
   alert("💡 Eco Suggestions coming from GPT-4 soon!");
 };
@@ -22,7 +28,6 @@ document.getElementById("locateBtn").onclick = () => {
   alert("📍 Fetching nearest recycle bins... (Map integration soon!)");
 };
 
-// Dark mode toggle
 document.getElementById("darkModeToggle").onclick = () => {
   document.body.classList.toggle("dark-mode");
 };
