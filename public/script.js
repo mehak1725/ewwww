@@ -1,15 +1,15 @@
-function toggleDarkMode() {
+document.getElementById("scanBtn").onclick = () => {
+  alert("🧠 Scanning waste... (Vision API feature coming soon!)");
+};
+
+document.getElementById("suggestBtn").onclick = () => {
+  alert("💡 Eco Suggestions coming from GPT-4 soon!");
+};
+
+document.getElementById("locateBtn").onclick = () => {
+  alert("📍 Fetching nearest recycle bins... (Map integration soon!)");
+};
+
+document.getElementById("darkModeToggle").onclick = () => {
   document.body.classList.toggle("dark-mode");
-}
-
-function scanWaste() {
-  alert("📷 Scanning waste... (camera access or upload will come here)");
-}
-
-function findRecyclingCenter() {
-  alert("📍 Locating nearby recycling centers...");
-}
-
-function askAI() {
-  alert("🤖 Asking AI for help... (GPT suggestions coming soon)");
-}
+};
