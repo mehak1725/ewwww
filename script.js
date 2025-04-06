@@ -7,27 +7,28 @@ document.getElementById("imageInput").onchange = async (event) => {
   if (!file) return;
 
   const formData = new FormData();
-  formData.append("image", file);
+  formData.append("inputs", file);
 
   document.getElementById("result").innerText = "🧠 Scanning...";
 
-  const response = await fetch("http://localhost:3000/scan", {
+  // 1. Fetch Hugging Face token securely from /api/token
+  const tokenRes = await fetch("/api/token");
+  const { token } = await tokenRes.json();
+
+  // 2. Call Hugging Face API securely with the fetched token
+  const response = await fetch("https://api-inference.huggingface.co/models/google/vit-base-patch16-224", {
     method: "POST",
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
     body: formData,
   });
 
-  const data = await response.json();
-  document.getElementById("result").innerText = `📦 AI thinks it's: ${data.label || "unknown item"}`;
-};
+  const result = await response.json();
 
-document.getElementById("suggestBtn").onclick = () => {
-  alert("💡 Eco Suggestions coming from GPT-4 soon!");
-};
-
-document.getElementById("locateBtn").onclick = () => {
-  alert("📍 Fetching nearest recycle bins... (Map integration soon!)");
-};
-
-document.getElementById("darkModeToggle").onclick = () => {
-  document.body.classList.toggle("dark-mode");
+  if (Array.isArray(result) && result.length > 0 && result[0].label) {
+    document.getElementById("result").innerText = `📦 AI thinks it's: ${result[0].label}`;
+  } else {
+    document.getElementById("result").innerText = `❌ Could not identify item`;
+  }
 };
