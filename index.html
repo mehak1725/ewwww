@@ -1,34 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>EWWWW - Eco Way to a Waste-Free World Wide Web</title>
-    <link rel="stylesheet" href="style.css" />
-  </head>
-  <body>
-    <div class="container">
-      <h1>♻️ Welcome to EWWWW</h1>
-      <p class="tagline">Eco Way to a Waste-Free World Wide Web</p>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>EWWWW - Eco Way to a Waste-Free World Wide Web</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="container">
+    <h1>♻️ Welcome to EWWWW</h1>
+    <p class="tagline">Eco Way to a Waste-Free World Wide Web</p>
 
-      <div class="buttons">
-        <!-- File input (hidden) -->
-        <input type="file" id="wasteInput" accept="image/*" hidden />
+    <!-- Image Upload -->
+    <input type="file" id="wasteImage" accept="image/*" />
 
-        <!-- Updated Scan Waste button triggers file input -->
-        <button onclick="document.getElementById('wasteInput').click()">📸 Scan Waste</button>
-
-        <button id="suggestBtn">💡 Get Eco Suggestions</button>
-        <button id="locateBtn">📍 Locate Recycle Bins</button>
-      </div>
-
-      <!-- Dark mode toggle -->
-      <button id="darkModeToggle">🌙 Toggle Dark Mode</button>
-
-      <!-- Image preview area -->
-      <img id="preview" style="display:none; max-width: 300px; margin-top: 20px;" />
+    <!-- Buttons -->
+    <div class="buttons">
+      <button id="scanBtn">📸 Scan Waste</button>
+      <button id="suggestBtn">💡 Get Eco Suggestions</button>
+      <button id="locateBtn">📍 Locate Recycle Bins</button>
     </div>
 
-    <script src="script.js"></script>
-  </body>
+    <!-- Dark Mode Toggle -->
+    <button id="darkModeToggle">🌙 Toggle Dark Mode</button>
+  </div>
+
+  <script src="script.js"></script>
+</body>
 </html>
