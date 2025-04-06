@@ -12,11 +12,11 @@ document.getElementById("imageInput").onchange = async (event) => {
   document.getElementById("result").innerText = "🧠 Scanning...";
 
   try {
-    // 1. Securely fetch token from Vercel backend
+    // 1. Fetch the token securely
     const tokenRes = await fetch("/api/token");
     const { token } = await tokenRes.json();
 
-    // 2. Call working Hugging Face model
+    // 2. Call the Hugging Face API with a working model
     const response = await fetch("https://api-inference.huggingface.co/models/google/vit-base-patch16-224", {
       method: "POST",
       headers: {
@@ -35,7 +35,7 @@ document.getElementById("imageInput").onchange = async (event) => {
     }
 
   } catch (error) {
-    console.error("Error during scan:", error);
+    console.error("⚠️ Error scanning image", error);
     document.getElementById("result").innerText = `⚠️ Error scanning image`;
   }
 };
