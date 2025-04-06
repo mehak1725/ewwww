@@ -32,3 +32,8 @@ document.getElementById("imageInput").onchange = async (event) => {
     document.getElementById("result").innerText = `❌ Could not identify item`;
   }
 };
+
+// ✅ Restore dark mode toggle functionality
+document.getElementById("darkModeToggle").onclick = () => {
+  document.body.classList.toggle("dark-mode");
+};
