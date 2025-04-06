@@ -1,1 +1,17 @@
-body { font-family: sans-serif; background: #f0f0f0; } button { padding: 10px; }
+body {
+  font-family: Arial, sans-serif;
+  padding: 20px;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+button {
+  margin: 5px;
+  padding: 10px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.dark-mode {
+  background-color: #121212;
+  color: #f1f1f1;
+}
