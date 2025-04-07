@@ -6,17 +6,19 @@ document.getElementById("imageInput").onchange = async (event) => {
   const file = event.target.files[0];
   if (!file) return;
 
+  const preview = document.getElementById("preview");
+  preview.src = URL.createObjectURL(file);
+  preview.style.display = "block";
+
   const formData = new FormData();
   formData.append("inputs", file);
 
   document.getElementById("result").innerText = "🧠 Scanning...";
 
   try {
-    // 1. Fetch the token securely
     const tokenRes = await fetch("/api/token");
     const { token } = await tokenRes.json();
 
-    // 2. Call the Hugging Face API with a working model
     const response = await fetch("https://api-inference.huggingface.co/models/google/vit-base-patch16-224", {
       method: "POST",
       headers: {
@@ -43,4 +45,13 @@ document.getElementById("imageInput").onchange = async (event) => {
 // Dark mode toggle
 document.getElementById("darkModeToggle").onclick = () => {
   document.body.classList.toggle("dark-mode");
+};
+
+// Placeholder alerts
+document.getElementById("suggestBtn").onclick = () => {
+  alert("💡 Coming soon: Eco Suggestions based on scanned item!");
+};
+
+document.getElementById("locateBtn").onclick = () => {
+  alert("📍 Coming soon: Locate nearby recycling bins!");
 };
