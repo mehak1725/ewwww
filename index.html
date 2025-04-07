@@ -8,7 +8,7 @@
 </head>
 <body>
   <div class="container">
-    <h1>♻️ Welcome to <span class="glow">EWWWW</span></h1>
+    <h1 class="title">♻️ Welcome to <span class="highlight">EWWWW</span></h1>
     <p class="tagline">Eco Way to a Waste-Free World Wide Web</p>
 
     <input type="file" id="imageInput" accept="image/*" style="display:none" />
@@ -19,27 +19,31 @@
       <button id="darkModeToggle">🌙 Toggle Dark Mode</button>
     </div>
 
-    <img id="preview" />
-    <div id="result"></div>
+    <img id="preview" src="https://i.imgur.com/G99rKwq.png" class="banana" />
 
-    <div id="moreInfo" class="info-section hidden">
-      <h2>➡️ More Info</h2>
-      <div class="info-cards">
-        <div class="card">
+    <div id="resultContainer">
+      <div id="resultText"></div>
+
+      <div class="info-grid">
+        <div class="info-card" onclick="toggleCard(this)">
           <h3>♻️ How to Dispose</h3>
           <p>Locate certified e-waste centers or drop-off points. Never throw electronics in the trash!</p>
+          <div class="extra">You can find nearby centers on your city's waste management portal.</div>
         </div>
-        <div class="card">
-          <h3>🌱 Upcycling Idea</h3>
-          <p>Turn your old phone into a security camera or a music player.</p>
+        <div class="info-card" onclick="toggleCard(this)">
+          <h3>🎨 Upcycling Idea</h3>
+          <p>Turn old phones into security cams or music players!</p>
+          <div class="extra">Apps like AlfredCamera let you turn old phones into home security cams easily.</div>
         </div>
-        <div class="card">
-          <h3>🧪 Toxic Alert</h3>
+        <div class="info-card" onclick="toggleCard(this)">
+          <h3>☠️ Toxic Alert</h3>
           <p>Electronics contain mercury, lead, and cadmium — harmful to soil and water.</p>
+          <div class="extra">These can cause serious health and environmental hazards if not disposed properly.</div>
         </div>
-        <div class="card">
+        <div class="info-card" onclick="toggleCard(this)">
           <h3>⭐ Eco Score</h3>
           <p>Saving 1 phone = Preventing 55kg of CO₂ emissions!</p>
+          <div class="extra">Reducing e-waste also reduces the need for mining raw materials like lithium and cobalt.</div>
         </div>
       </div>
     </div>
