@@ -1,66 +1,56 @@
-const wasteData = {
+const mockData = {
   plastic: {
-    type: "Plastic Waste (e.g., Bottle)",
-    dispose: "Clean and toss in the plastic recycling bin. Check local recycling rules!",
-    upcycle: "Use bottles for planters, bird feeders, or DIY crafts.",
-    toxic: "Microplastics pollute oceans and harm wildlife.",
-    score: "Recycling 1 bottle = Saving enough energy to light a bulb for 3 hours!"
+    type: "🧴 Plastic Waste (e.g., Bottle)",
+    dispose: "Use local plastic collection bins. Clean before recycling!",
+    upcycle: "Turn bottles into planters, lamps, or vertical gardens.",
+    toxic: "Plastic breaks down into microplastics — harmful to marine life.",
+    eco: "Recycling 1 bottle = saving enough energy to power a light bulb for 6 hours!",
   },
   electronic: {
-    type: "Electronic Waste (e.g., Phone)",
-    dispose: "Locate certified e-waste centers or drop-off points. Never throw electronics in trash!",
-    upcycle: "Turn old phones into security cams or music players with free apps like AlfredCamera.",
-    toxic: "Electronics contain mercury, lead, and cadmium — very harmful to soil and water.",
-    score: "Saving 1 phone = Preventing 55kg of CO₂ emissions!"
+    type: "📱 Electronic Waste (e.g., Phone)",
+    dispose: "Locate certified e-waste centers. Never trash electronics!",
+    upcycle: "Convert old phones to security cams or media players.",
+    toxic: "Electronics contain mercury and lead — toxic to soil and water.",
+    eco: "Saving 1 phone = prevents 55kg CO₂ emissions!",
   },
   organic: {
-    type: "Organic Waste (e.g., Banana Peel)",
-    dispose: "Compost it or throw in the organic waste bin.",
-    upcycle: "Use banana peels to polish shoes or as fertilizer!",
-    toxic: "Emits methane if not composted — a greenhouse gas!",
-    score: "Composting food waste reduces landfill burden and creates healthy soil!"
+    type: "🍌 Organic Waste (e.g., Banana Peel)",
+    dispose: "Compost in your backyard or organic bins.",
+    upcycle: "Banana peels make great fertilizer or natural polish.",
+    toxic: "If not composted, organic waste produces methane gas.",
+    eco: "Composting reduces landfill mass and improves soil quality!",
   }
 };
 
-function classifyWaste(imageSrc) {
-  if (imageSrc.includes("banana")) return "organic";
-  if (imageSrc.includes("phone") || imageSrc.includes("electronics")) return "electronic";
-  return "plastic"; // default
-}
+document.getElementById("scanBtn").onclick = () => {
+  document.getElementById("imageInput").click();
+};
 
-function showWasteInfo(type) {
-  const info = wasteData[type];
+document.getElementById("imageInput").onchange = (event) => {
+  const file = event.target.files[0];
+  if (!file) return;
 
-  document.getElementById("wasteInfo").innerHTML = `<h3>📱 ${info.type}</h3>`;
+  const preview = document.getElementById("preview");
+  preview.src = URL.createObjectURL(file);
+  preview.style.display = "block";
 
-  document.getElementById("card-dispose").innerHTML = `<h4>♻️ How to Dispose</h4><p>${info.dispose}</p>`;
-  document.getElementById("card-upcycle").innerHTML = `<h4>🎨 Upcycling Idea</h4><p>${info.upcycle}</p>`;
-  document.getElementById("card-toxic").innerHTML = `<h4>☠️ Toxic Alert</h4><p>${info.toxic}</p>`;
-  document.getElementById("card-score").innerHTML = `<h4>⭐ Eco Score</h4><p>${info.score}</p>`;
+  // Fake classifier based on filename
+  const filename = file.name.toLowerCase();
+  let type = "plastic";
+  if (filename.includes("phone") || filename.includes("laptop")) type = "electronic";
+  else if (filename.includes("banana") || filename.includes("fruit")) type = "organic";
 
-  const cards = document.querySelectorAll(".card-animated");
-  cards.forEach((card, i) => {
-    card.style.animationDelay = `${i * 0.2}s`;
-    card.style.opacity = 0;
-    card.style.transform = "scale(0.9)";
-  });
+  const data = mockData[type];
 
-  document.getElementById("infoCards").style.display = 'flex';
-}
+  document.getElementById("result").innerHTML = `
+    <h2>${data.type}</h2>
+    <h3>♻️ How to Dispose</h3><p>${data.dispose}</p>
+    <h3>🎨 Upcycling Idea</h3><p>${data.upcycle}</p>
+    <h3>☠️ Toxic Alert</h3><p>${data.toxic}</p>
+    <h3>⭐ Eco Score</h3><p>${data.eco}</p>
+  `;
+};
 
-document.getElementById("imageUpload").addEventListener("change", function () {
-  const file = this.files[0];
-  const reader = new FileReader();
-  reader.onload = function (e) {
-    const imageSrc = e.target.result;
-    document.getElementById("imagePreview").innerHTML = `<img src="${imageSrc}" alt="Uploaded Waste Image">`;
-
-    const detectedType = classifyWaste(imageSrc.toLowerCase());
-    showWasteInfo(detectedType);
-  };
-  if (file) reader.readAsDataURL(file);
-});
-
-function toggleDarkMode() {
+document.getElementById("darkModeToggle").onclick = () => {
   document.body.classList.toggle("dark-mode");
-}
+};
