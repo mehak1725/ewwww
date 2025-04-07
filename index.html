@@ -19,28 +19,28 @@
     </div>
     <button id="darkModeToggle">🌙 Toggle Dark Mode</button>
 
-    <img id="preview" alt="Preview Image"/>
-    <img src="https://i.ibb.co/n8JxV4s/banana.png" id="banana" alt="Banana" />
+    <div id="previewContainer">
+      <img id="preview" alt="Preview Image"/>
+      <div id="banana">🍌</div>
+    </div>
 
-    <div id="resultBox">
-      <h2 id="wasteType"></h2>
-      <div class="info-cards">
-        <div class="card" id="disposeCard">
-          <h3>♻️ How to Dispose</h3>
-          <p></p>
-        </div>
-        <div class="card" id="upcycleCard">
-          <h3>🎨 Upcycling Idea</h3>
-          <p></p>
-        </div>
-        <div class="card" id="toxicCard">
-          <h3>☠️ Toxic Alert</h3>
-          <p></p>
-        </div>
-        <div class="card" id="scoreCard">
-          <h3>⭐ Eco Score</h3>
-          <p></p>
-        </div>
+    <div id="resultSection">
+      <h2 id="wasteTitle">📦 Waste Type: </h2>
+      <div class="info-card">
+        <h3>♻️ How to Dispose</h3>
+        <p id="disposeText"></p>
+      </div>
+      <div class="info-card">
+        <h3>🎨 Upcycling Idea</h3>
+        <p id="upcycleText"></p>
+      </div>
+      <div class="info-card">
+        <h3>☠️ Toxic Alert</h3>
+        <p id="toxicText"></p>
+      </div>
+      <div class="info-card">
+        <h3>⭐ Eco Score</h3>
+        <p id="scoreText"></p>
       </div>
     </div>
   </div>
