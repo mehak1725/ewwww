@@ -1,83 +1,180 @@
 body {
-  font-family: 'Segoe UI', sans-serif;
-  background-color: #f5f5f5;
-  color: #333;
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(135deg, #e0f7fa, #ffffff);
   margin: 0;
   padding: 20px;
-  transition: background 0.3s, color 0.3s;
-}
-
-.dark-mode {
-  background-color: #121212;
-  color: #f5f5f5;
-}
-
-.container {
   text-align: center;
-  margin-top: 80px;
+  transition: background 0.4s ease;
 }
 
 h1 {
-  font-size: 2.5em;
-  margin-bottom: 10px;
+  font-size: 2.2rem;
+  color: #2e7d32;
+  animation: slideIn 1s ease-out;
 }
 
-.tagline {
-  font-size: 1.2em;
-  margin-bottom: 30px;
-  color: #666;
+p {
+  font-size: 1.1rem;
+  color: #555;
+  margin-bottom: 20px;
+  animation: fadeIn 1.5s ease-out;
 }
 
-.buttons button {
+button {
   margin: 10px;
-  padding: 12px 24px;
-  font-size: 1em;
+  padding: 14px 24px;
   border: none;
-  border-radius: 8px;
-  background-color: #00a86b;
+  border-radius: 30px;
+  background: #4caf50;
   color: white;
+  font-size: 1rem;
   cursor: pointer;
-  transition: background 0.2s ease, transform 0.2s;
+  transition: background 0.3s ease, transform 0.2s ease;
+  box-shadow: 0 4px 14px rgba(0,0,0,0.2);
 }
 
-.buttons button:hover {
-  background-color: #007f55;
+button:hover {
+  background: #388e3c;
   transform: scale(1.05);
 }
 
-#darkModeToggle {
-  margin-top: 30px;
-  padding: 10px 20px;
-  font-size: 0.9em;
-  border-radius: 8px;
-  border: 2px solid #00a86b;
-  background-color: transparent;
-  color: #00a86b;
-  cursor: pointer;
-  transition: background 0.2s ease, color 0.2s ease;
-}
-
-#darkModeToggle:hover {
-  background-color: #00a86b;
-  color: white;
+input[type="file"] {
+  display: none;
 }
 
 #preview {
-  max-width: 300px;
-  margin: 20px auto;
   display: none;
-  border-radius: 10px;
-  border: 2px solid #00a86b;
+  width: 250px;
+  height: auto;
+  margin: 20px auto;
+  border-radius: 16px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  animation: fadeIn 1s ease-out;
 }
 
 #result {
-  margin-top: 20px;
-  font-size: 1.3em;
+  font-size: 1.2rem;
   font-weight: bold;
-  color: #007f55;
-  transition: color 0.3s;
+  margin-top: 20px;
+  color: #00796b;
+  animation: pulse 1.5s infinite;
 }
 
-.dark-mode #result {
-  color: #00e395;
+.dark-mode {
+  background: linear-gradient(135deg, #1a1a1a, #333);
+  color: #f0f0f0;
+}
+
+.dark-mode button {
+  background: #00897b;
+}
+
+.dark-mode button:hover {
+  background: #00695c;
+}
+
+@keyframes slideIn {
+  from { transform: translateY(-30px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes pulse {
+  0% { opacity: 1; }
+  50% { opacity: 0.6; }
+  100% { opacity: 1; }
+}
+body {
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(135deg, #e0f7fa, #ffffff);
+  margin: 0;
+  padding: 20px;
+  text-align: center;
+  transition: background 0.4s ease;
+}
+
+h1 {
+  font-size: 2.2rem;
+  color: #2e7d32;
+  animation: slideIn 1s ease-out;
+}
+
+p {
+  font-size: 1.1rem;
+  color: #555;
+  margin-bottom: 20px;
+  animation: fadeIn 1.5s ease-out;
+}
+
+button {
+  margin: 10px;
+  padding: 14px 24px;
+  border: none;
+  border-radius: 30px;
+  background: #4caf50;
+  color: white;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.2s ease;
+  box-shadow: 0 4px 14px rgba(0,0,0,0.2);
+}
+
+button:hover {
+  background: #388e3c;
+  transform: scale(1.05);
+}
+
+input[type="file"] {
+  display: none;
+}
+
+#preview {
+  display: none;
+  width: 250px;
+  height: auto;
+  margin: 20px auto;
+  border-radius: 16px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  animation: fadeIn 1s ease-out;
+}
+
+#result {
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin-top: 20px;
+  color: #00796b;
+  animation: pulse 1.5s infinite;
+}
+
+.dark-mode {
+  background: linear-gradient(135deg, #1a1a1a, #333);
+  color: #f0f0f0;
+}
+
+.dark-mode button {
+  background: #00897b;
+}
+
+.dark-mode button:hover {
+  background: #00695c;
+}
+
+@keyframes slideIn {
+  from { transform: translateY(-30px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes pulse {
+  0% { opacity: 1; }
+  50% { opacity: 0.6; }
+  100% { opacity: 1; }
 }
