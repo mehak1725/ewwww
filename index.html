@@ -8,11 +8,10 @@
 </head>
 <body>
   <div class="container">
-    <h1 class="title">♻️ Welcome to <span>EWWWW</span></h1>
+    <h1>♻️ Welcome to <span class="glow">EWWWW</span></h1>
     <p class="tagline">Eco Way to a Waste-Free World Wide Web</p>
 
     <input type="file" id="imageInput" accept="image/*" style="display:none" />
-
     <div class="buttons">
       <button id="scanBtn">📸 Scan Waste</button>
       <button id="suggestBtn">💡 Get Eco Suggestions</button>
@@ -20,18 +19,29 @@
       <button id="darkModeToggle">🌙 Toggle Dark Mode</button>
     </div>
 
-    <div class="card" id="scanScreen">
-      <img id="preview" class="preview" />
-      <div id="result" class="resultBox">🧠 Waiting for image...</div>
-    </div>
+    <img id="preview" />
+    <div id="result"></div>
 
-    <div class="card hidden" id="detailsScreen">
-      <h2 id="wasteType"></h2>
-      <p id="decomposeTime"></p>
-      <p id="suggestion"></p>
-      <p id="ecoTip"></p>
-      <button id="moreInfo">➡️ More Info</button>
-      <button id="backBtn">⬅️ Back</button>
+    <div id="moreInfo" class="info-section hidden">
+      <h2>➡️ More Info</h2>
+      <div class="info-cards">
+        <div class="card">
+          <h3>♻️ How to Dispose</h3>
+          <p>Locate certified e-waste centers or drop-off points. Never throw electronics in the trash!</p>
+        </div>
+        <div class="card">
+          <h3>🌱 Upcycling Idea</h3>
+          <p>Turn your old phone into a security camera or a music player.</p>
+        </div>
+        <div class="card">
+          <h3>🧪 Toxic Alert</h3>
+          <p>Electronics contain mercury, lead, and cadmium — harmful to soil and water.</p>
+        </div>
+        <div class="card">
+          <h3>⭐ Eco Score</h3>
+          <p>Saving 1 phone = Preventing 55kg of CO₂ emissions!</p>
+        </div>
+      </div>
     </div>
   </div>
 
