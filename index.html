@@ -1,34 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta charset="UTF-8">
   <title>EWWWW - Eco Way</title>
-  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <div class="container">
-    <h1>♻️ Welcome to <span class="highlight">EWWWW</span></h1>
-    <p>Eco Way to a Waste-Free World Wide Web</p>
+  <h1 class="fade-in">♻️ <span class="highlight">Welcome to EWWWW</span></h1>
+  <p class="fade-in delay-1">Eco Way to a Waste-Free World Wide Web</p>
 
-    <div class="button-group">
-      <button onclick="document.getElementById('fileInput').click()">📸 Scan Waste</button>
-      <button onclick="getSuggestions()">💡 Get Eco Suggestions</button>
-      <button>📍 Locate Recycle Bins</button>
-      <button onclick="toggleDarkMode()">🌙 Toggle Dark Mode</button>
-    </div>
+  <div class="button-group fade-in delay-2">
+    <input type="file" id="imageUpload" accept="image/*" style="display: none;" />
+    <button onclick="document.getElementById('imageUpload').click()">📸 Scan Waste</button>
+    <button onclick="alert('AI Suggests Upcycling Ideas!')">💡 Get Eco Suggestions</button>
+    <button onclick="alert('Locating nearest recycle bins...')">📍 Locate Recycle Bins</button>
+    <button onclick="toggleDarkMode()">🌙 Toggle Dark Mode</button>
+  </div>
 
-    <input type="file" id="fileInput" accept="image/*" onchange="handleImageUpload(event)" hidden />
+  <div id="imagePreview" class="fade-in delay-3"></div>
+  <div class="info-area" id="wasteInfo"></div>
 
-    <div id="imagePreview"></div>
-    <div id="wasteInfo" class="info-area"></div>
-
-    <div class="cards">
-      <div id="card-dispose" class="card"></div>
-      <div id="card-upcycle" class="card"></div>
-      <div id="card-toxic" class="card"></div>
-      <div id="card-score" class="card"></div>
-    </div>
+  <div class="cards" id="infoCards">
+    <div class="card card-animated" id="card-dispose"></div>
+    <div class="card card-animated" id="card-upcycle"></div>
+    <div class="card card-animated" id="card-toxic"></div>
+    <div class="card card-animated" id="card-score"></div>
   </div>
 
   <script src="script.js"></script>
