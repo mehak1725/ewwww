@@ -2,87 +2,83 @@ body {
   font-family: 'Segoe UI', sans-serif;
   margin: 0;
   padding: 0;
-  background: #e6f7e6;
-  color: #2b2b2b;
-  transition: background 0.5s, color 0.5s;
+  background: #d4f9d4;
+  color: #222;
+  transition: all 0.4s ease;
 }
 
-body.dark-mode {
-  background: #1b3a1b;
-  color: #e6ffe6;
+.dark-mode {
+  background: #003300;
+  color: #eee;
 }
 
 .container {
-  max-width: 800px;
-  margin: auto;
-  padding: 30px;
   text-align: center;
+  padding: 40px 20px;
+}
+
+h1 {
+  font-size: 2.2em;
+  margin-bottom: 5px;
 }
 
 .tagline {
-  font-size: 1.2em;
-  margin-bottom: 20px;
   font-style: italic;
-}
-
-.buttons {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 10px;
-  margin-bottom: 20px;
+  margin-bottom: 30px;
 }
 
 button {
-  padding: 10px 20px;
+  margin: 10px 5px;
+  padding: 12px 20px;
   font-size: 1em;
-  border: none;
-  background: #4CAF50;
-  color: white;
   cursor: pointer;
+  border: none;
   border-radius: 8px;
-  transition: transform 0.3s, background 0.3s;
+  background-color: #4caf50;
+  color: white;
+  transition: transform 0.2s ease;
 }
 
 button:hover {
   transform: scale(1.05);
-  background: #388e3c;
+  background-color: #388e3c;
 }
 
-.preview-section {
-  margin-top: 20px;
-}
-
-#preview {
+img#preview {
   max-width: 300px;
   margin: 20px auto;
-  display: none;
+  display: block;
   border-radius: 10px;
-  box-shadow: 0 0 10px #00000040;
+  box-shadow: 0 0 10px #888;
 }
 
-.result-section {
+#result {
+  font-size: 1.3em;
+  margin-top: 20px;
+  font-weight: bold;
+}
+
+.info-cards {
   margin-top: 30px;
+  display: grid;
+  gap: 20px;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  padding: 20px;
+}
+
+.card {
+  background-color: #e6ffe6;
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
   text-align: left;
+  transition: transform 0.3s ease;
 }
 
-.result-section.hidden {
-  display: none;
+.dark-mode .card {
+  background-color: #145214;
 }
 
-.info-card {
-  background: #ffffffcc;
-  margin: 10px 0;
-  padding: 15px;
-  border-radius: 12px;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-  transition: transform 0.3s;
-}
-
-.info-card:hover {
+.card:hover {
   transform: translateY(-5px);
-}
-
-.dark-mode .info-card {
-  background: #2f4f2f;
 }
