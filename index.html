@@ -4,6 +4,11 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>EWWWW - Eco Way to a Waste-Free World Wide Web</title>
+
+  <!-- 🌟 Fancy Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+
+  <!-- 💅 External CSS -->
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
@@ -11,19 +16,27 @@
     <h1>♻️ Welcome to EWWWW</h1>
     <p class="tagline">Eco Way to a Waste-Free World Wide Web</p>
 
+    <!-- 📸 Image Upload -->
     <input type="file" id="imageInput" accept="image/*" style="display:none" />
+
+    <!-- 🎛️ Main Action Buttons -->
     <div class="buttons">
       <button id="scanBtn">📸 Scan Waste</button>
       <button id="suggestBtn">💡 Get Eco Suggestions</button>
       <button id="locateBtn">📍 Locate Recycle Bins</button>
     </div>
 
+    <!-- 🌙 Theme Switcher -->
     <button id="darkModeToggle">🌙 Toggle Dark Mode</button>
 
-    <img id="preview" />
+    <!-- 🖼️ Image Preview -->
+    <img id="preview" alt="Image preview will appear here" />
+
+    <!-- 🧠 AI Result -->
     <div id="result"></div>
   </div>
 
+  <!-- 🧠 Script -->
   <script src="script.js"></script>
 </body>
 </html>
