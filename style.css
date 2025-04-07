@@ -1,32 +1,28 @@
 body {
-  font-family: "Segoe UI", sans-serif;
-  background-color: #e6f9e6;
-  color: #222;
+  font-family: 'Segoe UI', sans-serif;
   margin: 0;
-  padding: 20px;
-  transition: background 0.4s, color 0.4s;
-  background-image: url('https://www.transparenttextures.com/patterns/green-dust-and-scratches.png');
+  padding: 0;
+  background: #e6f7e6;
+  color: #2b2b2b;
+  transition: background 0.5s, color 0.5s;
 }
 
-.dark-mode {
-  background-color: #013220;
-  color: #f1f1f1;
+body.dark-mode {
+  background: #1b3a1b;
+  color: #e6ffe6;
 }
 
 .container {
-  max-width: 700px;
+  max-width: 800px;
   margin: auto;
+  padding: 30px;
   text-align: center;
 }
 
-h1 {
-  font-size: 2em;
-  margin-bottom: 0.2em;
-}
-
 .tagline {
-  font-size: 1.1em;
+  font-size: 1.2em;
   margin-bottom: 20px;
+  font-style: italic;
 }
 
 .buttons {
@@ -38,53 +34,55 @@ h1 {
 }
 
 button {
-  padding: 10px 18px;
+  padding: 10px 20px;
+  font-size: 1em;
   border: none;
-  border-radius: 8px;
-  background-color: #45a049;
+  background: #4CAF50;
   color: white;
   cursor: pointer;
-  transition: transform 0.2s ease;
+  border-radius: 8px;
+  transition: transform 0.3s, background 0.3s;
 }
 
 button:hover {
-  background-color: #3c8a40;
   transform: scale(1.05);
+  background: #388e3c;
 }
 
-#preview {
-  display: none;
-  max-width: 300px;
-  margin: 20px auto;
-  border-radius: 12px;
-  box-shadow: 0 0 10px rgba(0,0,0,0.2);
-}
-
-#wasteType {
-  font-size: 1.2em;
-  margin: 15px 0;
-  font-weight: bold;
-}
-
-.card-grid {
-  display: grid;
-  gap: 20px;
+.preview-section {
   margin-top: 20px;
 }
 
-.card {
-  background: white;
+#preview {
+  max-width: 300px;
+  margin: 20px auto;
+  display: none;
+  border-radius: 10px;
+  box-shadow: 0 0 10px #00000040;
+}
+
+.result-section {
+  margin-top: 30px;
+  text-align: left;
+}
+
+.result-section.hidden {
+  display: none;
+}
+
+.info-card {
+  background: #ffffffcc;
+  margin: 10px 0;
   padding: 15px;
   border-radius: 12px;
-  text-align: left;
-  box-shadow: 0 5px 10px rgba(0,0,0,0.1);
-  transition: transform 0.2s ease;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  transition: transform 0.3s;
 }
 
-.card:hover {
-  transform: scale(1.02);
+.info-card:hover {
+  transform: translateY(-5px);
 }
 
-.dark-mode .card {
-  background: #1d3d2f;
+.dark-mode .info-card {
+  background: #2f4f2f;
 }
