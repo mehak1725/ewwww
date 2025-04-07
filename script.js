@@ -1,24 +1,24 @@
-const mockData = {
+const wasteData = {
   plastic: {
-    type: "🧴 Plastic Waste (e.g., Bottle)",
-    dispose: "Use local plastic collection bins. Clean before recycling!",
-    upcycle: "Turn bottles into planters, lamps, or vertical gardens.",
-    toxic: "Plastic breaks down into microplastics — harmful to marine life.",
-    eco: "Recycling 1 bottle = saving enough energy to power a light bulb for 6 hours!",
+    type: "Plastic Waste (e.g., Bottle)",
+    dispose: "Use yellow recycling bins. Clean before discarding!",
+    upcycle: "Turn bottles into planters or lamp holders.",
+    toxic: "Plastic breaks into microplastics, polluting oceans & harming wildlife.",
+    score: "Recycling 1 bottle = Saving enough energy to power a bulb for 3 hrs.",
   },
   electronic: {
-    type: "📱 Electronic Waste (e.g., Phone)",
-    dispose: "Locate certified e-waste centers. Never trash electronics!",
-    upcycle: "Convert old phones to security cams or media players.",
-    toxic: "Electronics contain mercury and lead — toxic to soil and water.",
-    eco: "Saving 1 phone = prevents 55kg CO₂ emissions!",
+    type: "Electronic Waste (e.g., Phone)",
+    dispose: "Locate certified e-waste centers or drop-off points.",
+    upcycle: "Old phones can be security cams or music players!",
+    toxic: "Contains mercury, lead, cadmium — harmful to soil & water.",
+    score: "Saving 1 phone = Preventing 55kg of CO₂ emissions!",
   },
   organic: {
-    type: "🍌 Organic Waste (e.g., Banana Peel)",
-    dispose: "Compost in your backyard or organic bins.",
-    upcycle: "Banana peels make great fertilizer or natural polish.",
-    toxic: "If not composted, organic waste produces methane gas.",
-    eco: "Composting reduces landfill mass and improves soil quality!",
+    type: "Organic Waste (e.g., Banana Peel)",
+    dispose: "Compost at home or use community bins.",
+    upcycle: "Peels can be used as natural fertilizers or skincare masks.",
+    toxic: "If dumped, releases methane — a potent greenhouse gas.",
+    score: "Composting saves landfill space and improves soil health.",
   }
 };
 
@@ -34,23 +34,35 @@ document.getElementById("imageInput").onchange = (event) => {
   preview.src = URL.createObjectURL(file);
   preview.style.display = "block";
 
-  // Fake classifier based on filename
-  const filename = file.name.toLowerCase();
-  let type = "plastic";
-  if (filename.includes("phone") || filename.includes("laptop")) type = "electronic";
-  else if (filename.includes("banana") || filename.includes("fruit")) type = "organic";
+  document.getElementById("result").innerText = "🔍 Analyzing...";
 
-  const data = mockData[type];
+  setTimeout(() => {
+    const fileName = file.name.toLowerCase();
+    let category = "organic";
+    if (fileName.includes("plastic")) category = "plastic";
+    else if (fileName.includes("phone") || fileName.includes("e-waste")) category = "electronic";
 
-  document.getElementById("result").innerHTML = `
-    <h2>${data.type}</h2>
-    <h3>♻️ How to Dispose</h3><p>${data.dispose}</p>
-    <h3>🎨 Upcycling Idea</h3><p>${data.upcycle}</p>
-    <h3>☠️ Toxic Alert</h3><p>${data.toxic}</p>
-    <h3>⭐ Eco Score</h3><p>${data.eco}</p>
-  `;
+    const info = wasteData[category];
+    document.getElementById("result").innerText = `📱 ${info.type}`;
+
+    const infoHTML = `
+      <div class="card"><h3>♻️ How to Dispose</h3><p>${info.dispose}</p></div>
+      <div class="card"><h3>🎨 Upcycling Idea</h3><p>${info.upcycle}</p></div>
+      <div class="card"><h3>☠️ Toxic Alert</h3><p>${info.toxic}</p></div>
+      <div class="card"><h3>⭐ Eco Score</h3><p>${info.score}</p></div>
+    `;
+    document.getElementById("infoCards").innerHTML = infoHTML;
+  }, 1000);
 };
 
 document.getElementById("darkModeToggle").onclick = () => {
   document.body.classList.toggle("dark-mode");
+};
+
+// Placeholder buttons
+document.getElementById("suggestBtn").onclick = () => {
+  alert("🌍 Coming soon: AI-powered recycling suggestions!");
+};
+document.getElementById("locateBtn").onclick = () => {
+  alert("📍 Feature to locate recycling bins is coming soon!");
 };
