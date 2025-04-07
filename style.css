@@ -1,127 +1,105 @@
-/* 🌍 Universal Styles */
 body {
+  font-family: "Segoe UI", sans-serif;
   margin: 0;
   padding: 0;
-  font-family: 'Poppins', sans-serif;
-  background: linear-gradient(135deg, #d0f4de, #a9def9);
-  color: #222;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  overflow-x: hidden;
-  transition: background 0.5s ease;
+  background-color: #f2f2f2;
+  color: #333;
+  transition: background 0.4s, color 0.4s;
 }
 
 .dark-mode {
-  background: linear-gradient(135deg, #0f0f0f, #1a1a1a);
-  color: #eee;
+  background-color: #121212;
+  color: #f9f9f9;
 }
 
 .container {
+  max-width: 800px;
+  margin: 50px auto;
+  padding: 20px;
   text-align: center;
-  padding: 30px;
-  border-radius: 20px;
-  background: rgba(255, 255, 255, 0.8);
-  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
-  animation: fadeInUp 1s ease-in-out;
-  max-width: 90%;
-  width: 500px;
+  animation: fadeIn 1s ease-in-out;
 }
 
-.dark-mode .container {
-  background: rgba(20, 20, 20, 0.8);
-}
-
-h1 {
+.title {
   font-size: 2.5rem;
-  margin-bottom: 10px;
-  animation: popIn 1s ease forwards;
+  animation: popIn 0.8s ease;
 }
 
 .tagline {
   font-size: 1.2rem;
   margin-bottom: 30px;
-  opacity: 0.7;
 }
 
-.buttons {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 15px;
-  margin-bottom: 20px;
-}
-
-button {
+.buttons button {
+  margin: 10px;
   padding: 12px 20px;
   font-size: 1rem;
   border: none;
   border-radius: 12px;
-  cursor: pointer;
-  background-color: #38b000;
+  background-color: #34c759;
   color: white;
-  transition: transform 0.2s, background 0.3s ease;
+  cursor: pointer;
+  transition: transform 0.2s ease;
 }
 
-button:hover {
-  background-color: #70e000;
+.buttons button:hover {
+  background-color: #28a745;
   transform: scale(1.05);
 }
 
-#darkModeToggle {
-  margin-top: 10px;
-  background-color: #6a4c93;
-}
-
-#preview {
-  margin: 20px 0;
-  width: 100%;
-  max-height: 300px;
-  object-fit: contain;
-  border-radius: 15px;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+img#preview {
+  margin-top: 20px;
+  max-width: 100%;
+  border-radius: 10px;
   display: none;
-  animation: zoomIn 0.6s ease;
+  animation: zoomIn 0.8s ease;
 }
 
-#result {
+#resultContainer {
+  margin-top: 30px;
+}
+
+.resultText {
+  font-size: 1.3rem;
+  margin: 20px 0;
+}
+
+.extraInfo p {
+  margin: 10px 0;
   font-size: 1.1rem;
-  font-weight: bold;
-  margin-top: 15px;
-  animation: popIn 0.7s ease;
 }
 
-/* 🌈 Animations */
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(40px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+.nextBtn, .backBtn {
+  padding: 10px 16px;
+  margin-top: 20px;
+  border: none;
+  border-radius: 8px;
+  background-color: #007aff;
+  color: white;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.nextBtn:hover, .backBtn:hover {
+  background-color: #0051a8;
+}
+
+.hidden {
+  display: none;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-30px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
 @keyframes popIn {
-  0% {
-    transform: scale(0.5);
-    opacity: 0;
-  }
-  100% {
-    transform: scale(1);
-    opacity: 1;
-  }
+  from { transform: scale(0.5); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
 }
 
 @keyframes zoomIn {
-  from {
-    transform: scale(0.6);
-    opacity: 0;
-  }
-  to {
-    transform: scale(1);
-    opacity: 1;
-  }
+  from { transform: scale(0.8); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
 }
