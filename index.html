@@ -8,34 +8,42 @@
 </head>
 <body>
   <div class="container">
-    <h1>♻️ Welcome to <span class="highlight">EWWWW</span></h1>
+    <h1>♻️ Welcome to EWWWW</h1>
     <p class="tagline">Eco Way to a Waste-Free World Wide Web</p>
 
+    <input type="file" id="imageInput" accept="image/*" style="display:none" />
     <div class="buttons">
-      <input type="file" id="imageInput" accept="image/*" style="display:none" />
       <button id="scanBtn">📸 Scan Waste</button>
       <button id="suggestBtn">💡 Get Eco Suggestions</button>
       <button id="locateBtn">📍 Locate Recycle Bins</button>
-      <button id="darkModeToggle">🌙 Toggle Dark Mode</button>
     </div>
+    <button id="darkModeToggle">🌙 Toggle Dark Mode</button>
 
-    <label for="imageInput" id="previewLabel">
-      <img id="preview" src="banana.png" alt="Waste Image" />
-    </label>
+    <img id="preview" alt="Preview Image"/>
+    <img src="https://i.ibb.co/n8JxV4s/banana.png" id="banana" alt="Banana" />
 
-    <div id="result" class="result">
-      <p><strong>📱 Waste Type:</strong> <span id="wasteType">Electronic Waste (e.g., Phone)</span></p>
-      <p><strong>♻️ Decomposition Time:</strong> <span id="decomposeTime">1 million years</span></p>
-      <p><strong>✅ Suggestion:</strong> <span id="suggestion">Recycle via certified e-waste centers.</span></p>
-      <p><strong>🌱 Eco Tip:</strong> <span id="ecoTip">Never throw electronics in the trash — they leak toxic chemicals!</span></p>
-    </div>
-
-    <h2>➡️ More Info</h2>
-    <div class="info-cards" id="infoCards">
-      <!-- Dynamic cards here -->
+    <div id="resultBox">
+      <h2 id="wasteType"></h2>
+      <div class="info-cards">
+        <div class="card" id="disposeCard">
+          <h3>♻️ How to Dispose</h3>
+          <p></p>
+        </div>
+        <div class="card" id="upcycleCard">
+          <h3>🎨 Upcycling Idea</h3>
+          <p></p>
+        </div>
+        <div class="card" id="toxicCard">
+          <h3>☠️ Toxic Alert</h3>
+          <p></p>
+        </div>
+        <div class="card" id="scoreCard">
+          <h3>⭐ Eco Score</h3>
+          <p></p>
+        </div>
+      </div>
     </div>
   </div>
-
   <script src="script.js"></script>
 </body>
 </html>
