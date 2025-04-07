@@ -10,46 +10,46 @@ document.getElementById("imageInput").onchange = (event) => {
   preview.src = URL.createObjectURL(file);
   preview.style.display = "block";
 
-  // Mocked AI: Detect waste type based on filename
+  // Mock logic based on filename
   const fileName = file.name.toLowerCase();
-  let wasteType = "e-waste";
-  if (fileName.includes("plastic")) wasteType = "plastic";
-  else if (fileName.includes("banana") || fileName.includes("organic")) wasteType = "organic";
+  let type = "Unknown";
+  let dispose = "";
+  let upcycle = "";
+  let toxic = "";
+  let eco = "";
 
-  showResult(wasteType);
-};
-
-function showResult(type) {
-  let html = "";
-
-  if (type === "plastic") {
-    html = `
-      <div class="card"><strong>🧴 Plastic Waste</strong><br>Single-use plastics like bottles, bags, wrappers.</div>
-      <div class="card">♻️ <strong>How to Dispose:</strong><br>Clean & sort plastics. Recycle at drop-off points or bins.</div>
-      <div class="card">🎨 <strong>Upcycling Idea:</strong><br>Turn bottles into planters, lights, or storage!</div>
-      <div class="card">☠️ <strong>Toxic Alert:</strong><br>Plastics pollute oceans, harm animals, and don't decompose!</div>
-      <div class="card">⭐ <strong>Eco Score:</strong><br>Saving 1kg of plastic = saves 3.8L of oil & 1.5kg CO₂</div>
-    `;
-  } else if (type === "organic") {
-    html = `
-      <div class="card"><strong>🍌 Organic Waste</strong><br>Food scraps, fruit peels, garden waste.</div>
-      <div class="card">♻️ <strong>How to Dispose:</strong><br>Compost in home bins or municipal compost programs.</div>
-      <div class="card">🎨 <strong>Upcycling Idea:</strong><br>Make DIY compost, use banana peels as fertilizer!</div>
-      <div class="card">☠️ <strong>Toxic Alert:</strong><br>Rotting waste releases methane if landfilled!</div>
-      <div class="card">⭐ <strong>Eco Score:</strong><br>Composting 1kg food waste = reduces 0.9kg CO₂</div>
-    `;
+  if (fileName.includes("plastic")) {
+    type = "Plastic Waste (e.g., Bottle)";
+    dispose = "Clean and toss into plastic recycling. Check recycling codes!";
+    upcycle = "Turn into plant holders, keychains, or eco-bricks!";
+    toxic = "Plastics can take centuries to break down, leaching microplastics.";
+    eco = "Recycling 1 plastic bottle saves enough energy to power a bulb for 3 hrs.";
+  } else if (fileName.includes("e") || fileName.includes("phone")) {
+    type = "Electronic Waste (e.g., Phone)";
+    dispose = "Locate certified e-waste centers. Never trash electronics!";
+    upcycle = "Convert old phones to security cams or media players.";
+    toxic = "Electronics contain mercury and lead — toxic to soil and water.";
+    eco = "Saving 1 phone = prevents 55kg CO₂ emissions!";
+  } else if (fileName.includes("banana") || fileName.includes("organic")) {
+    type = "Organic Waste (e.g., Banana Peel)";
+    dispose = "Use for compost or bury in garden. Biodegradable!";
+    upcycle = "Use peel as fertilizer or polish for silver & shoes!";
+    toxic = "Usually non-toxic, but attracts pests if left exposed.";
+    eco = "Composting diverts waste & enriches soil naturally!";
   } else {
-    html = `
-      <div class="card"><strong>📱 Electronic Waste</strong><br>Phones, gadgets, cables, chargers.</div>
-      <div class="card">♻️ <strong>How to Dispose:</strong><br>Drop at certified e-waste centers. Never trash electronics!</div>
-      <div class="card">🎨 <strong>Upcycling Idea:</strong><br>Convert old phones to security cams or media players.</div>
-      <div class="card">☠️ <strong>Toxic Alert:</strong><br>Electronics contain mercury, lead — toxic to soil & water.</div>
-      <div class="card">⭐ <strong>Eco Score:</strong><br>Saving 1 phone = prevents 55kg CO₂ emissions!</div>
-    `;
+    type = "Unidentified Waste";
+    dispose = "Try renaming your file to include 'plastic', 'phone', or 'banana'.";
+    upcycle = "-";
+    toxic = "-";
+    eco = "-";
   }
 
-  document.getElementById("result").innerHTML = html;
-}
+  document.getElementById("wasteType").innerText = type;
+  document.getElementById("disposeText").innerText = dispose;
+  document.getElementById("upcycleText").innerText = upcycle;
+  document.getElementById("toxicText").innerText = toxic;
+  document.getElementById("ecoText").innerText = eco;
+};
 
 document.getElementById("darkModeToggle").onclick = () => {
   document.body.classList.toggle("dark-mode");
@@ -60,5 +60,5 @@ document.getElementById("suggestBtn").onclick = () => {
 };
 
 document.getElementById("locateBtn").onclick = () => {
-  alert("📍 Coming soon: Nearby recycle bin locator with GPS map!");
+  alert("📍 Feature coming soon: Locate recycling bins near you!");
 };
