@@ -1,15 +1,14 @@
 body {
-  font-family: 'Segoe UI', sans-serif;
   margin: 0;
-  padding: 0;
-  background: #d4f9d4;
+  font-family: 'Segoe UI', sans-serif;
+  background-color: #d4fcd4;
   color: #222;
-  transition: all 0.4s ease;
+  transition: background-color 0.3s, color 0.3s;
 }
 
-.dark-mode {
-  background: #003300;
-  color: #eee;
+body.dark-mode {
+  background-color: #003300;
+  color: #f0f0f0;
 }
 
 .container {
@@ -18,67 +17,81 @@ body {
 }
 
 h1 {
-  font-size: 2.2em;
-  margin-bottom: 5px;
+  font-size: 2.2rem;
+  margin-bottom: 0.2rem;
 }
 
-.tagline {
-  font-style: italic;
-  margin-bottom: 30px;
+.buttons {
+  margin: 20px 0;
 }
 
 button {
-  margin: 10px 5px;
-  padding: 12px 20px;
-  font-size: 1em;
-  cursor: pointer;
-  border: none;
-  border-radius: 8px;
   background-color: #4caf50;
   color: white;
-  transition: transform 0.2s ease;
+  border: none;
+  margin: 10px;
+  padding: 12px 18px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background 0.3s, transform 0.2s;
 }
 
 button:hover {
+  background-color: #45a049;
   transform: scale(1.05);
-  background-color: #388e3c;
 }
 
-img#preview {
-  max-width: 300px;
-  margin: 20px auto;
-  display: block;
-  border-radius: 10px;
-  box-shadow: 0 0 10px #888;
-}
-
-#result {
-  font-size: 1.3em;
+.image-preview img {
   margin-top: 20px;
+  max-width: 200px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  animation: fadeIn 0.6s ease-in-out;
+}
+
+.result-text {
   font-weight: bold;
+  font-size: 1.2rem;
+  margin: 20px 0;
+  animation: slideUp 0.5s ease;
 }
 
 .info-cards {
-  margin-top: 30px;
   display: grid;
-  gap: 20px;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  grid-template-columns: repeat(2, 1fr);
+  gap: 15px;
   padding: 20px;
+  max-width: 900px;
+  margin: 0 auto;
+  animation: fadeIn 0.5s ease;
 }
 
 .card {
-  background-color: #e6ffe6;
-  border-radius: 10px;
+  background-color: #ffffffd5;
   padding: 20px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+  font-size: 0.95rem;
   text-align: left;
-  transition: transform 0.3s ease;
-}
-
-.dark-mode .card {
-  background-color: #145214;
+  transition: transform 0.3s;
 }
 
 .card:hover {
-  transform: translateY(-5px);
+  transform: translateY(-4px);
+}
+
+body.dark-mode .card {
+  background-color: #134b13;
+  color: #fff;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideUp {
+  from { transform: translateY(40px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
 }
