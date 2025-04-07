@@ -1,41 +1,8 @@
-const wasteDatabase = {
-  plastic: {
-    type: "Plastic Waste (e.g., Bottle)",
-    dispose: "Clean and drop in plastic recycling bins. Avoid mixing with organic waste.",
-    upcycle: "Turn plastic bottles into planters, organizers, or DIY crafts.",
-    toxic: "Takes 500+ years to degrade. Breaks into microplastics harming marine life.",
-    eco: "Recycling 1 bottle saves enough energy to power a light bulb for 3 hours."
-  },
-  electronic: {
-    type: "Electronic Waste (e.g., Phone)",
-    dispose: "Locate certified e-waste centers. Never trash electronics!",
-    upcycle: "Convert old phones to security cams or media players.",
-    toxic: "Electronics contain mercury and lead — toxic to soil and water.",
-    eco: "Saving 1 phone = prevents 55kg CO₂ emissions!"
-  },
-  organic: {
-    type: "Organic Waste (e.g., Food Scraps)",
-    dispose: "Compost at home or use city compost bins. Avoid plastic contamination.",
-    upcycle: "Use banana peels to polish leather or make compost tea.",
-    toxic: "When dumped in landfill, creates methane — a powerful greenhouse gas.",
-    eco: "Composting reduces methane and returns nutrients to soil."
-  }
-};
-
-// Simulated label detection (mock)
-function getMockLabel(filename) {
-  const lower = filename.toLowerCase();
-  if (lower.includes("plastic")) return "plastic";
-  if (lower.includes("food") || lower.includes("banana") || lower.includes("organic")) return "organic";
-  if (lower.includes("phone") || lower.includes("electronic") || lower.includes("laptop")) return "electronic";
-  return "plastic"; // default
-}
-
 document.getElementById("scanBtn").onclick = () => {
   document.getElementById("imageInput").click();
 };
 
-document.getElementById("imageInput").onchange = async (event) => {
+document.getElementById("imageInput").onchange = (event) => {
   const file = event.target.files[0];
   if (!file) return;
 
@@ -43,15 +10,48 @@ document.getElementById("imageInput").onchange = async (event) => {
   preview.src = URL.createObjectURL(file);
   preview.style.display = "block";
 
-  const label = getMockLabel(file.name);
-  const data = wasteDatabase[label];
+  const resultEl = document.getElementById("result");
+  resultEl.innerText = "🧠 Scanning...";
 
-  document.getElementById("resultSection").classList.remove("hidden");
-  document.getElementById("wasteType").innerText = `📦 ${data.type}`;
-  document.getElementById("disposeInfo").innerText = data.dispose;
-  document.getElementById("upcycleInfo").innerText = data.upcycle;
-  document.getElementById("toxicInfo").innerText = data.toxic;
-  document.getElementById("ecoInfo").innerText = data.eco;
+  // Simulated detection (mock AI)
+  setTimeout(() => {
+    const fileName = file.name.toLowerCase();
+    let type = "plastic";
+
+    if (fileName.includes("phone") || fileName.includes("laptop")) type = "electronic";
+    else if (fileName.includes("banana") || fileName.includes("food")) type = "organic";
+
+    const data = {
+      plastic: {
+        label: "📦 Plastic Waste (e.g., Bottle)",
+        dispose: "♻️ How to Dispose\nClean and dry, drop in plastic recycling bin.",
+        upcycle: "🎨 Upcycling Idea\nTurn bottles into planters, lamps or organizers.",
+        toxic: "☠️ Toxic Alert\nTakes up to 500 years to decompose; microplastics pollute oceans.",
+        eco: "⭐ Eco Score\nRecycling 1 bottle saves enough energy to power a light bulb for 3 hours."
+      },
+      electronic: {
+        label: "📱 Electronic Waste (e.g., Phone)",
+        dispose: "♻️ How to Dispose\nLocate certified e-waste centers. Never trash electronics!",
+        upcycle: "🎨 Upcycling Idea\nConvert old phones to security cams or media players.",
+        toxic: "☠️ Toxic Alert\nElectronics contain mercury and lead — toxic to soil and water.",
+        eco: "⭐ Eco Score\nSaving 1 phone = prevents 55kg CO₂ emissions!"
+      },
+      organic: {
+        label: "🍌 Organic Waste (e.g., Banana Peel)",
+        dispose: "♻️ How to Dispose\nCompost at home or use community compost bins.",
+        upcycle: "🎨 Upcycling Idea\nMake banana peel fertilizer or clean silverware naturally.",
+        toxic: "☠️ Toxic Alert\nOrganic waste in landfills creates methane, a potent greenhouse gas.",
+        eco: "⭐ Eco Score\nComposting 1kg waste reduces 0.5kg CO₂!"
+      }
+    };
+
+    const info = data[type];
+    resultEl.innerText = info.label;
+    document.getElementById("dispose").innerText = info.dispose;
+    document.getElementById("upcycle").innerText = info.upcycle;
+    document.getElementById("toxic").innerText = info.toxic;
+    document.getElementById("eco").innerText = info.eco;
+  }, 1000);
 };
 
 document.getElementById("darkModeToggle").onclick = () => {
@@ -59,9 +59,9 @@ document.getElementById("darkModeToggle").onclick = () => {
 };
 
 document.getElementById("suggestBtn").onclick = () => {
-  alert("🌍 Eco Tips: Try composting, say no to plastic, and recycle mindfully!");
+  alert("💡 Coming soon: Personalized eco suggestions, challenges & tips!");
 };
 
 document.getElementById("locateBtn").onclick = () => {
-  alert("📍 Coming soon: Smart bin locator based on your city & zip code!");
+  alert("📍 Locate feature coming: We’ll help you find nearby bins and drop points!");
 };
