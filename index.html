@@ -12,13 +12,16 @@
     <p class="tagline">Eco Way to a Waste-Free World Wide Web</p>
 
     <div class="buttons">
+      <input type="file" id="imageInput" accept="image/*" style="display:none" />
       <button id="scanBtn">📸 Scan Waste</button>
       <button id="suggestBtn">💡 Get Eco Suggestions</button>
       <button id="locateBtn">📍 Locate Recycle Bins</button>
       <button id="darkModeToggle">🌙 Toggle Dark Mode</button>
     </div>
 
-    <img id="preview" src="banana.png" alt="Waste Image" />
+    <label for="imageInput" id="previewLabel">
+      <img id="preview" src="banana.png" alt="Waste Image" />
+    </label>
 
     <div id="result" class="result">
       <p><strong>📱 Waste Type:</strong> <span id="wasteType">Electronic Waste (e.g., Phone)</span></p>
@@ -29,7 +32,7 @@
 
     <h2>➡️ More Info</h2>
     <div class="info-cards" id="infoCards">
-      <!-- Cards will load here -->
+      <!-- Dynamic cards here -->
     </div>
   </div>
 
