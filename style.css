@@ -1,103 +1,68 @@
 body {
   font-family: 'Segoe UI', sans-serif;
-  background-color: #f0fdf4;
-  color: #222;
   margin: 0;
   padding: 0;
-  text-align: center;
-  transition: background-color 0.5s, color 0.5s;
+  background-color: #f3f4f6;
+  color: #111;
+  transition: background 0.5s, color 0.5s;
 }
-
-.dark-mode {
-  background-color: #121212;
-  color: #eee;
-}
-
 .container {
+  text-align: center;
   padding: 2rem;
-  animation: fadeIn 1s ease-in-out;
 }
-
-h1 {
-  font-size: 2.5rem;
-  margin-bottom: 0.5rem;
-}
-
 .tagline {
   font-size: 1.2rem;
   margin-bottom: 2rem;
 }
-
-.buttons button, #darkModeToggle {
+button {
   margin: 0.5rem;
-  padding: 1rem 1.5rem;
+  padding: 0.8rem 1.5rem;
   font-size: 1rem;
+  border-radius: 12px;
   border: none;
-  border-radius: 20px;
-  background-color: #34d399;
+  background-color: #4CAF50;
   color: white;
   cursor: pointer;
-  transition: transform 0.2s, background-color 0.3s;
+  transition: transform 0.2s;
 }
-
-.buttons button:hover, #darkModeToggle:hover {
-  background-color: #10b981;
+button:hover {
   transform: scale(1.05);
 }
-
+#previewContainer {
+  margin-top: 1.5rem;
+  position: relative;
+}
 #preview {
-  margin-top: 1rem;
   max-width: 300px;
   display: none;
+  margin: 0 auto;
   border-radius: 20px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
 }
-
 #banana {
-  width: 80px;
-  margin-top: 1rem;
-  animation: bounce 2s infinite;
-}
-
-#resultBox {
-  margin-top: 2rem;
+  font-size: 4rem;
   display: none;
+  margin-top: 10px;
 }
-
-#wasteType {
-  font-size: 1.5rem;
-  margin-bottom: 1rem;
+#resultSection {
+  margin-top: 2rem;
+  text-align: left;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
 }
-
-.info-cards {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 1rem;
+.info-card {
+  background: #e0f7fa;
+  border-radius: 12px;
   padding: 1rem;
+  margin: 1rem 0;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.1);
 }
-
-.card {
-  background: #fff;
-  padding: 1rem;
-  border-radius: 15px;
-  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-  transition: transform 0.3s ease;
+.dark-mode {
+  background-color: #121212;
+  color: #f0f0f0;
 }
-
-.dark-mode .card {
+.dark-mode .info-card {
   background-color: #1e1e1e;
-}
-
-.card:hover {
-  transform: translateY(-5px);
-}
-
-@keyframes fadeIn {
-  from {opacity: 0; transform: translateY(10px);}
-  to {opacity: 1; transform: translateY(0);}
-}
-
-@keyframes bounce {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-10px); }
+  border: 1px solid #333;
 }
