@@ -2,14 +2,17 @@ body {
   font-family: 'Segoe UI', sans-serif;
   margin: 0;
   padding: 20px;
-  background-color: #111;
-  color: #fff;
+  background-color: #e6ffe6; /* Light green */
+  color: #003300;
   text-align: center;
   overflow-x: hidden;
+  background-image: url('https://www.transparenttextures.com/patterns/green-dust-and-scratches.png');
+  background-size: 200px 200px;
+  background-repeat: repeat;
 }
 
 .highlight {
-  color: #00ffcc;
+  color: #00994d;
 }
 
 .button-group {
@@ -22,14 +25,14 @@ body {
   font-size: 16px;
   border: none;
   border-radius: 10px;
-  background-color: #00cc66;
+  background-color: #00994d;
   color: white;
   cursor: pointer;
   transition: transform 0.3s ease, background-color 0.3s;
 }
 
 .button-group button:hover {
-  background-color: #00994d;
+  background-color: #006633;
   transform: scale(1.05);
 }
 
@@ -37,7 +40,7 @@ body {
   margin: 20px auto;
   max-width: 300px;
   border-radius: 20px;
-  box-shadow: 0 0 20px #00ffcc;
+  box-shadow: 0 0 20px #66ffcc;
   display: block;
   animation: fadeIn 1s ease;
 }
@@ -57,8 +60,8 @@ body {
 }
 
 .card {
-  background-color: #d9ffe3;
-  color: #000;
+  background-color: #ccffcc;
+  color: #003300;
   border-radius: 15px;
   padding: 20px;
   width: 250px;
@@ -72,13 +75,16 @@ body {
 }
 
 .dark-mode {
-  background-color: #1c1c1c;
-  color: #fff;
+  background-color: #003300;
+  color: #e6ffe6;
+  background-image: url('https://www.transparenttextures.com/patterns/black-linen.png');
+  background-size: 200px 200px;
+  background-repeat: repeat;
 }
 
 .dark-mode .card {
-  background-color: #2a2a2a;
-  color: #fff;
+  background-color: #336633;
+  color: #ffffff;
 }
 
 /* Animations */
@@ -92,17 +98,9 @@ body {
   opacity: 0;
 }
 
-.delay-1 {
-  animation-delay: 0.3s;
-}
-
-.delay-2 {
-  animation-delay: 0.6s;
-}
-
-.delay-3 {
-  animation-delay: 0.9s;
-}
+.delay-1 { animation-delay: 0.3s; }
+.delay-2 { animation-delay: 0.6s; }
+.delay-3 { animation-delay: 0.9s; }
 
 .card-animated {
   opacity: 0;
