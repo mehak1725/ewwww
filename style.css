@@ -1,68 +1,72 @@
 body {
   font-family: 'Segoe UI', sans-serif;
   margin: 0;
-  padding: 0;
-  background-color: #f3f4f6;
-  color: #111;
-  transition: background 0.5s, color 0.5s;
-}
-.container {
+  padding: 20px;
+  background-color: #111;
+  color: #fff;
   text-align: center;
-  padding: 2rem;
 }
-.tagline {
-  font-size: 1.2rem;
-  margin-bottom: 2rem;
+
+.highlight {
+  color: #00ffcc;
 }
-button {
-  margin: 0.5rem;
-  padding: 0.8rem 1.5rem;
-  font-size: 1rem;
-  border-radius: 12px;
+
+.button-group {
+  margin: 20px 0;
+}
+
+.button-group button {
+  margin: 10px;
+  padding: 10px 20px;
+  font-size: 16px;
   border: none;
-  background-color: #4CAF50;
+  border-radius: 8px;
+  background-color: #00cc66;
   color: white;
   cursor: pointer;
-  transition: transform 0.2s;
+  transition: 0.3s;
 }
-button:hover {
-  transform: scale(1.05);
+
+.button-group button:hover {
+  background-color: #00a95c;
 }
-#previewContainer {
-  margin-top: 1.5rem;
-  position: relative;
-}
-#preview {
+
+#imagePreview img {
+  margin: 20px auto;
   max-width: 300px;
-  display: none;
-  margin: 0 auto;
   border-radius: 20px;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  box-shadow: 0 0 20px #00ffcc;
 }
-#banana {
-  font-size: 4rem;
-  display: none;
-  margin-top: 10px;
+
+.info-area {
+  margin: 20px auto;
+  font-size: 18px;
 }
-#resultSection {
-  margin-top: 2rem;
+
+.cards {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+  margin-top: 30px;
+}
+
+.card {
+  background-color: #d9ffe3;
+  color: #000;
+  border-radius: 15px;
+  padding: 20px;
+  width: 250px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.2);
   text-align: left;
-  max-width: 600px;
-  margin-left: auto;
-  margin-right: auto;
 }
-.info-card {
-  background: #e0f7fa;
-  border-radius: 12px;
-  padding: 1rem;
-  margin: 1rem 0;
-  box-shadow: 0 3px 6px rgba(0,0,0,0.1);
-}
+
 .dark-mode {
-  background-color: #121212;
-  color: #f0f0f0;
+  background-color: #1c1c1c;
+  color: #fff;
 }
-.dark-mode .info-card {
-  background-color: #1e1e1e;
-  border: 1px solid #333;
+
+.dark-mode .card {
+  background-color: #2a2a2a;
+  color: #fff;
 }
