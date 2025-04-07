@@ -1,4 +1,3 @@
-<!-- index.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,9 +7,8 @@
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <div class="bg-graphics"></div>
   <div class="container">
-    <h1>♻️ Welcome to EWWWW</h1>
+    <h1 class="title">♻️ Welcome to EWWWW</h1>
     <p class="tagline">Eco Way to a Waste-Free World Wide Web</p>
 
     <input type="file" id="imageInput" accept="image/*" style="display:none" />
@@ -22,10 +20,10 @@
       <button id="darkModeToggle">🌙 Toggle Dark Mode</button>
     </div>
 
-    <img id="preview" alt="Preview Image"/>
+    <img id="preview" src="banana.gif" alt="Preview Image" />
     <div id="result"></div>
 
-    <div id="infoCards" class="cards"></div>
+    <div id="infoCards" class="card-container"></div>
   </div>
 
   <script src="script.js"></script>
