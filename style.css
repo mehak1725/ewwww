@@ -1,94 +1,108 @@
 body {
   margin: 0;
-  padding: 0;
   font-family: 'Segoe UI', sans-serif;
-  background-color: #e6ffe6;
-  color: #003300;
-  background-image: url('https://www.transparenttextures.com/patterns/green-dust-and-scratches.png');
-  background-size: cover;
-  transition: all 0.4s ease;
+  transition: background 0.5s, color 0.5s;
+  background: #e8f5e9; /* light green */
+  color: #1b5e20;
+  overflow-x: hidden;
 }
 
 .dark-mode {
-  background-color: #002200;
-  color: #ccffcc;
-  background-image: url('https://www.transparenttextures.com/patterns/dark-wood.png');
+  background: #1b5e20; /* dark green */
+  color: #e8f5e9;
 }
 
 .container {
-  max-width: 800px;
-  margin: auto;
-  padding: 2rem;
   text-align: center;
+  padding: 2rem;
+  animation: fadeIn 1.5s ease-in-out;
 }
 
-h1 {
+h1.title {
   font-size: 2.5rem;
-  margin-bottom: 0.5rem;
-  animation: fadeIn 1s ease-out;
+  margin-bottom: 0.3rem;
+  animation: slideInTop 1s ease-out;
 }
 
 .tagline {
   font-size: 1.2rem;
-  margin-bottom: 1.5rem;
-  color: #444;
+  margin-bottom: 2rem;
+  animation: slideInTop 1.5s ease-out;
 }
 
 .buttons {
   display: flex;
   flex-wrap: wrap;
-  gap: 10px;
   justify-content: center;
-  margin-bottom: 2rem;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
 }
 
 button {
   background-color: #66bb6a;
-  color: white;
   border: none;
-  padding: 12px 18px;
+  padding: 0.8rem 1.2rem;
+  border-radius: 30px;
   font-size: 1rem;
-  border-radius: 12px;
   cursor: pointer;
-  transition: transform 0.2s ease;
+  transition: transform 0.2s ease, background 0.4s;
 }
 
 button:hover {
+  background-color: #43a047;
   transform: scale(1.05);
-  background-color: #4caf50;
-}
-
-.image-wrapper {
-  margin: 2rem 0;
 }
 
 #preview {
-  max-width: 60%;
-  border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0, 128, 0, 0.3);
-  animation: fadeIn 1s ease-out;
+  display: block;
+  max-width: 200px;
+  margin: 1rem auto;
+  border-radius: 15px;
+  box-shadow: 0 0 20px rgba(0,0,0,0.2);
+  animation: pulse 2s infinite;
 }
 
-.result-card {
-  background-color: #ffffffcc;
-  padding: 20px;
-  border-radius: 16px;
-  box-shadow: 0 8px 20px rgba(0, 100, 0, 0.2);
-  text-align: left;
-  line-height: 1.6;
-  animation: slideUp 1s ease-out;
+#result {
+  font-size: 1.3rem;
+  margin-top: 1rem;
+  font-weight: bold;
 }
 
-.dark-mode .result-card {
-  background-color: #113311cc;
+.card-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1rem;
+  padding: 1rem;
+  margin-top: 1.5rem;
+}
+
+.card {
+  background-color: #a5d6a7;
+  border-radius: 15px;
+  padding: 1rem;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  transition: transform 0.3s;
+}
+
+.card:hover {
+  transform: scale(1.05);
+}
+
+.dark-mode .card {
+  background-color: #2e7d32;
 }
 
 @keyframes fadeIn {
-  from {opacity: 0;}
-  to {opacity: 1;}
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
-@keyframes slideUp {
-  from {transform: translateY(40px); opacity: 0;}
-  to {transform: translateY(0); opacity: 1;}
+@keyframes slideInTop {
+  from { opacity: 0; transform: translateY(-40px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.03); }
 }
