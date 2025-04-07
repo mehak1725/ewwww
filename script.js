@@ -2,6 +2,22 @@ document.getElementById('darkModeToggle').addEventListener('click', () => {
   document.body.classList.toggle('dark');
 });
 
+document.getElementById('scanBtn').addEventListener('click', () => {
+  document.getElementById('imageInput').click();
+});
+
+document.getElementById('imageInput').addEventListener('change', function () {
+  const file = this.files[0];
+  if (file) {
+    const reader = new FileReader();
+    reader.onload = function (e) {
+      document.getElementById('preview').src = e.target.result;
+      // 🔄 Here you can add API call to classify image
+    };
+    reader.readAsDataURL(file);
+  }
+});
+
 const wasteData = {
   "Electronic Waste": {
     decompose: "1 million years",
@@ -29,42 +45,11 @@ const wasteData = {
         extra: "Reducing e-waste reduces mining of lithium and cobalt."
       }
     ]
-  },
-
-  "Plastic Waste": {
-    decompose: "450 years",
-    suggestion: "Recycle plastic bottles, bags, and containers at collection points.",
-    tip: "Avoid single-use plastics — use reusable items!",
-    cards: [
-      {
-        title: "♻️ How to Dispose",
-        text: "Clean and separate plastic before recycling.",
-        extra: "Check your area’s guidelines on recyclable plastics."
-      },
-      {
-        title: "🎨 Upcycling Idea",
-        text: "Turn plastic bottles into planters or organizers.",
-        extra: "Cut, paint, and reuse bottles creatively!"
-      },
-      {
-        title: "☠️ Toxic Alert",
-        text: "Plastic can release microplastics into water sources.",
-        extra: "These particles harm marine life and may affect human health."
-      },
-      {
-        title: "⭐ Eco Score",
-        text: "Recycling 1 ton of plastic = saving 5,774 kWh energy!",
-        extra: "Reduces greenhouse gas emissions significantly."
-      }
-    ]
   }
-
-  // Add more types like Organic, Metal, etc.
 };
 
-// For demo — simulate waste type
-const currentWaste = "Electronic Waste"; // change to "Plastic Waste" for demo
-
+// Default load
+const currentWaste = "Electronic Waste";
 const waste = wasteData[currentWaste];
 document.getElementById("wasteType").innerText = currentWaste;
 document.getElementById("decomposeTime").innerText = waste.decompose;
@@ -73,7 +58,6 @@ document.getElementById("ecoTip").innerText = waste.tip;
 
 const infoCards = document.getElementById("infoCards");
 infoCards.innerHTML = "";
-
 waste.cards.forEach(card => {
   const div = document.createElement("div");
   div.className = "card";
