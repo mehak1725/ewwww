@@ -1,27 +1,3 @@
-const wasteData = {
-  plastic: {
-    type: "📦 Plastic Waste (e.g., Bottle)",
-    dispose: "Clean and sort plastics. Drop at local plastic collection bins or recycling centers.",
-    upcycle: "Turn bottles into planters, organizers, or lamps!",
-    toxic: "Plastics leach microplastics into soil/water, harming animals and humans.",
-    score: "Recycling 1 plastic bottle saves enough energy to light a 60W bulb for 6 hours!"
-  },
-  ewaste: {
-    type: "📱 Electronic Waste (e.g., Phone)",
-    dispose: "Locate certified e-waste centers. Never trash electronics!",
-    upcycle: "Convert old phones to security cams or media players.",
-    toxic: "Electronics contain mercury and lead — toxic to soil and water.",
-    score: "Saving 1 phone = prevents 55kg CO₂ emissions!"
-  },
-  organic: {
-    type: "🍌 Organic Waste (e.g., Banana Peel)",
-    dispose: "Compost at home or use municipal compost bins.",
-    upcycle: "Use peels as natural fertilizer or for DIY face masks!",
-    toxic: "If not composted, organics create methane in landfills.",
-    score: "Composting 1kg organic waste = removes ~0.25kg methane!"
-  }
-};
-
 document.getElementById("scanBtn").onclick = () => {
   document.getElementById("imageInput").click();
 };
@@ -34,20 +10,13 @@ document.getElementById("imageInput").onchange = (event) => {
   preview.src = URL.createObjectURL(file);
   preview.style.display = "block";
 
-  const fileName = file.name.toLowerCase();
-  let category = "ewaste";
+  const filename = file.name.toLowerCase();
+  let type = "";
+  if (filename.includes("plastic")) type = "plastic";
+  else if (filename.includes("organic")) type = "organic";
+  else type = "ewaste";
 
-  if (fileName.includes("plastic")) category = "plastic";
-  else if (fileName.includes("banana") || fileName.includes("organic")) category = "organic";
-
-  const data = wasteData[category];
-  document.getElementById("wasteType").innerText = data.type;
-  document.getElementById("disposeText").innerText = data.dispose;
-  document.getElementById("upcycleText").innerText = data.upcycle;
-  document.getElementById("toxicText").innerText = data.toxic;
-  document.getElementById("ecoScoreText").innerText = data.score;
-
-  document.getElementById("wasteInfo").classList.remove("hidden");
+  showWasteInfo(type);
 };
 
 document.getElementById("darkModeToggle").onclick = () => {
@@ -55,9 +24,55 @@ document.getElementById("darkModeToggle").onclick = () => {
 };
 
 document.getElementById("suggestBtn").onclick = () => {
-  alert("💡 Coming soon: AI-powered recycling suggestions, eco-points, and tips!");
+  alert("🌍 Coming soon: AI-powered recycling suggestions, eco-points, upcycling ideas & more!");
 };
 
 document.getElementById("locateBtn").onclick = () => {
-  alert("📍 Coming soon: Map with nearest recycling & composting bins!");
+  alert("📍 Visit your city’s waste portal to find nearby recycling bins.");
 };
+
+function showWasteInfo(type) {
+  const wasteType = document.getElementById("wasteType");
+  const infoCards = document.getElementById("infoCards");
+  infoCards.innerHTML = "";
+
+  const data = {
+    ewaste: {
+      label: "📱 Electronic Waste (e.g., Phone)",
+      cards: [
+        { title: "♻️ How to Dispose", text: "Locate certified e-waste centers. Never trash electronics!" },
+        { title: "🎨 Upcycling Idea", text: "Convert old phones to security cams or media players." },
+        { title: "☠️ Toxic Alert", text: "Electronics contain mercury and lead — toxic to soil and water." },
+        { title: "⭐ Eco Score", text: "Saving 1 phone = prevents 55kg CO₂ emissions!" }
+      ]
+    },
+    plastic: {
+      label: "🧴 Plastic Waste (e.g., Bottle)",
+      cards: [
+        { title: "♻️ How to Dispose", text: "Rinse and drop in plastics bin. Avoid single-use plastics." },
+        { title: "🎨 Upcycling Idea", text: "Make planters, organizers or art from bottles and containers!" },
+        { title: "☠️ Toxic Alert", text: "Plastic breaks into microplastics — harmful to animals & humans." },
+        { title: "⭐ Eco Score", text: "Recycling 1 bottle saves enough energy to power a bulb for 6 hours!" }
+      ]
+    },
+    organic: {
+      label: "🍌 Organic Waste (e.g., Banana Peel)",
+      cards: [
+        { title: "♻️ How to Dispose", text: "Compost at home or use community compost bins." },
+        { title: "🎨 Upcycling Idea", text: "Use banana peel to shine shoes or feed to compost worms!" },
+        { title: "☠️ Toxic Alert", text: "Organic waste in landfills produces methane — a greenhouse gas." },
+        { title: "⭐ Eco Score", text: "Composting reduces 50% of your waste and enriches soil!" }
+      ]
+    }
+  };
+
+  const selected = data[type];
+  wasteType.innerText = selected.label;
+
+  selected.cards.forEach(card => {
+    const div = document.createElement("div");
+    div.className = "card";
+    div.innerHTML = `<h3>${card.title}</h3><p>${card.text}</p>`;
+    infoCards.appendChild(div);
+  });
+}
