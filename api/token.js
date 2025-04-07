@@ -1,5 +1,7 @@
 export default function handler(req, res) {
-  res.status(200).json({
-    token: process.env.HF_API_TOKEN,
-  });
+  const token = process.env.HF_API_TOKEN;
+  if (!token) {
+    return res.status(500).json({ error: 'Token not found' });
+  }
+  res.status(200).json({ token });
 }
