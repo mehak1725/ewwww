@@ -1,27 +1,3 @@
-const wasteData = {
-  plastic: {
-    type: "Plastic Waste (e.g., Bottle)",
-    dispose: "Use yellow recycling bins. Clean before discarding!",
-    upcycle: "Turn bottles into planters or lamp holders.",
-    toxic: "Plastic breaks into microplastics, polluting oceans & harming wildlife.",
-    score: "Recycling 1 bottle = Saving enough energy to power a bulb for 3 hrs.",
-  },
-  electronic: {
-    type: "Electronic Waste (e.g., Phone)",
-    dispose: "Locate certified e-waste centers or drop-off points.",
-    upcycle: "Old phones can be security cams or music players!",
-    toxic: "Contains mercury, lead, cadmium — harmful to soil & water.",
-    score: "Saving 1 phone = Preventing 55kg of CO₂ emissions!",
-  },
-  organic: {
-    type: "Organic Waste (e.g., Banana Peel)",
-    dispose: "Compost at home or use community bins.",
-    upcycle: "Peels can be used as natural fertilizers or skincare masks.",
-    toxic: "If dumped, releases methane — a potent greenhouse gas.",
-    score: "Composting saves landfill space and improves soil health.",
-  }
-};
-
 document.getElementById("scanBtn").onclick = () => {
   document.getElementById("imageInput").click();
 };
@@ -34,35 +10,55 @@ document.getElementById("imageInput").onchange = (event) => {
   preview.src = URL.createObjectURL(file);
   preview.style.display = "block";
 
-  document.getElementById("result").innerText = "🔍 Analyzing...";
+  // Mocked AI: Detect waste type based on filename
+  const fileName = file.name.toLowerCase();
+  let wasteType = "e-waste";
+  if (fileName.includes("plastic")) wasteType = "plastic";
+  else if (fileName.includes("banana") || fileName.includes("organic")) wasteType = "organic";
 
-  setTimeout(() => {
-    const fileName = file.name.toLowerCase();
-    let category = "organic";
-    if (fileName.includes("plastic")) category = "plastic";
-    else if (fileName.includes("phone") || fileName.includes("e-waste")) category = "electronic";
-
-    const info = wasteData[category];
-    document.getElementById("result").innerText = `📱 ${info.type}`;
-
-    const infoHTML = `
-      <div class="card"><h3>♻️ How to Dispose</h3><p>${info.dispose}</p></div>
-      <div class="card"><h3>🎨 Upcycling Idea</h3><p>${info.upcycle}</p></div>
-      <div class="card"><h3>☠️ Toxic Alert</h3><p>${info.toxic}</p></div>
-      <div class="card"><h3>⭐ Eco Score</h3><p>${info.score}</p></div>
-    `;
-    document.getElementById("infoCards").innerHTML = infoHTML;
-  }, 1000);
+  showResult(wasteType);
 };
+
+function showResult(type) {
+  let html = "";
+
+  if (type === "plastic") {
+    html = `
+      <div class="card"><strong>🧴 Plastic Waste</strong><br>Single-use plastics like bottles, bags, wrappers.</div>
+      <div class="card">♻️ <strong>How to Dispose:</strong><br>Clean & sort plastics. Recycle at drop-off points or bins.</div>
+      <div class="card">🎨 <strong>Upcycling Idea:</strong><br>Turn bottles into planters, lights, or storage!</div>
+      <div class="card">☠️ <strong>Toxic Alert:</strong><br>Plastics pollute oceans, harm animals, and don't decompose!</div>
+      <div class="card">⭐ <strong>Eco Score:</strong><br>Saving 1kg of plastic = saves 3.8L of oil & 1.5kg CO₂</div>
+    `;
+  } else if (type === "organic") {
+    html = `
+      <div class="card"><strong>🍌 Organic Waste</strong><br>Food scraps, fruit peels, garden waste.</div>
+      <div class="card">♻️ <strong>How to Dispose:</strong><br>Compost in home bins or municipal compost programs.</div>
+      <div class="card">🎨 <strong>Upcycling Idea:</strong><br>Make DIY compost, use banana peels as fertilizer!</div>
+      <div class="card">☠️ <strong>Toxic Alert:</strong><br>Rotting waste releases methane if landfilled!</div>
+      <div class="card">⭐ <strong>Eco Score:</strong><br>Composting 1kg food waste = reduces 0.9kg CO₂</div>
+    `;
+  } else {
+    html = `
+      <div class="card"><strong>📱 Electronic Waste</strong><br>Phones, gadgets, cables, chargers.</div>
+      <div class="card">♻️ <strong>How to Dispose:</strong><br>Drop at certified e-waste centers. Never trash electronics!</div>
+      <div class="card">🎨 <strong>Upcycling Idea:</strong><br>Convert old phones to security cams or media players.</div>
+      <div class="card">☠️ <strong>Toxic Alert:</strong><br>Electronics contain mercury, lead — toxic to soil & water.</div>
+      <div class="card">⭐ <strong>Eco Score:</strong><br>Saving 1 phone = prevents 55kg CO₂ emissions!</div>
+    `;
+  }
+
+  document.getElementById("result").innerHTML = html;
+}
 
 document.getElementById("darkModeToggle").onclick = () => {
   document.body.classList.toggle("dark-mode");
 };
 
-// Placeholder buttons
 document.getElementById("suggestBtn").onclick = () => {
-  alert("🌍 Coming soon: AI-powered recycling suggestions!");
+  alert("🌍 Coming soon: AI-powered recycling suggestions, eco-points & upcycling ideas!");
 };
+
 document.getElementById("locateBtn").onclick = () => {
-  alert("📍 Feature to locate recycling bins is coming soon!");
+  alert("📍 Coming soon: Nearby recycle bin locator with GPS map!");
 };
