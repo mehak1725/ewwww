@@ -11,7 +11,9 @@ document.getElementById("imageInput").onchange = (event) => {
   preview.style.display = "block";
 
   const resultEl = document.getElementById("result");
+  const detailsEl = document.getElementById("details");
   resultEl.innerText = "🧠 Scanning...";
+  detailsEl.style.display = "none";
 
   // Simulated detection (mock AI)
   setTimeout(() => {
@@ -51,6 +53,7 @@ document.getElementById("imageInput").onchange = (event) => {
     document.getElementById("upcycle").innerText = info.upcycle;
     document.getElementById("toxic").innerText = info.toxic;
     document.getElementById("eco").innerText = info.eco;
+    detailsEl.style.display = "grid";
   }, 1000);
 };
 
