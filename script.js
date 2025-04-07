@@ -1,70 +1,67 @@
 document.getElementById("scanBtn").onclick = () => {
-  document.getElementById("imageInput").click();
+  document.getElementById("fileInput").click();
 };
 
-document.getElementById("imageInput").onchange = (event) => {
-  const file = event.target.files[0];
-  if (!file) return;
+document.getElementById("toggleModeBtn").onclick = () => {
+  document.body.classList.toggle("dark-mode");
+};
 
-  const preview = document.getElementById("preview");
-  preview.src = URL.createObjectURL(file);
-  preview.style.display = "block";
+document.getElementById("fileInput").addEventListener("change", function () {
+  const file = this.files[0];
+  const preview = document.getElementById("imagePreview");
+  const result = document.getElementById("result");
+  const details = document.getElementById("details");
 
-  const resultEl = document.getElementById("result");
-  const detailsEl = document.getElementById("details");
-  resultEl.innerText = "🧠 Scanning...";
-  detailsEl.style.display = "none";
+  if (file) {
+    const reader = new FileReader();
+    reader.onload = function (e) {
+      preview.innerHTML = `<img src="${e.target.result}" alt="Uploaded Image"/>`;
+    };
+    reader.readAsDataURL(file);
 
-  // Simulated detection (mock AI)
-  setTimeout(() => {
-    const fileName = file.name.toLowerCase();
-    let type = "plastic";
-
-    if (fileName.includes("phone") || fileName.includes("laptop")) type = "electronic";
-    else if (fileName.includes("banana") || fileName.includes("food")) type = "organic";
+    // Simulate AI detection (mocked)
+    const types = ["plastic", "organic", "electronic"];
+    const type = types[Math.floor(Math.random() * types.length)];
 
     const data = {
       plastic: {
         label: "📦 Plastic Waste (e.g., Bottle)",
-        dispose: "♻️ How to Dispose\nClean and dry, drop in plastic recycling bin.",
-        upcycle: "🎨 Upcycling Idea\nTurn bottles into planters, lamps or organizers.",
-        toxic: "☠️ Toxic Alert\nTakes up to 500 years to decompose; microplastics pollute oceans.",
-        eco: "⭐ Eco Score\nRecycling 1 bottle saves enough energy to power a light bulb for 3 hours."
-      },
-      electronic: {
-        label: "📱 Electronic Waste (e.g., Phone)",
-        dispose: "♻️ How to Dispose\nLocate certified e-waste centers. Never trash electronics!",
-        upcycle: "🎨 Upcycling Idea\nConvert old phones to security cams or media players.",
-        toxic: "☠️ Toxic Alert\nElectronics contain mercury and lead — toxic to soil and water.",
-        eco: "⭐ Eco Score\nSaving 1 phone = prevents 55kg CO₂ emissions!"
+        dispose: "Clean and place in plastic recycling bins.",
+        upcycle: "Make eco bricks or DIY planters.",
+        toxic: "Takes 1000+ years to decompose!",
+        eco: "Recycling 1 bottle saves enough energy to power a bulb for 3 hours."
       },
       organic: {
         label: "🍌 Organic Waste (e.g., Banana Peel)",
-        dispose: "♻️ How to Dispose\nCompost at home or use community compost bins.",
-        upcycle: "🎨 Upcycling Idea\nMake banana peel fertilizer or clean silverware naturally.",
-        toxic: "☠️ Toxic Alert\nOrganic waste in landfills creates methane, a potent greenhouse gas.",
-        eco: "⭐ Eco Score\nComposting 1kg waste reduces 0.5kg CO₂!"
+        dispose: "Compost it in a home or community bin.",
+        upcycle: "Create natural fertilizers or banana peel polish!",
+        toxic: "Not toxic but methane emissions if landfilled.",
+        eco: "Composting prevents greenhouse gas release!"
+      },
+      electronic: {
+        label: "📱 Electronic Waste (e.g., Phone)",
+        dispose: "Locate certified e-waste centers. Never trash electronics!",
+        upcycle: "Convert old phones to security cams or media players.",
+        toxic: "Electronics contain mercury and lead — toxic to soil and water.",
+        eco: "Saving 1 phone = prevents 55kg CO₂ emissions!"
       }
     };
 
     const info = data[type];
-    resultEl.innerText = info.label;
-    document.getElementById("dispose").innerText = info.dispose;
-    document.getElementById("upcycle").innerText = info.upcycle;
-    document.getElementById("toxic").innerText = info.toxic;
-    document.getElementById("eco").innerText = info.eco;
-    detailsEl.style.display = "grid";
-  }, 1000);
-};
+    result.innerText = info.label;
+    document.getElementById("dispose").innerHTML = `♻️ <strong>How to Dispose:</strong> ${info.dispose}`;
+    document.getElementById("upcycle").innerHTML = `🎨 <strong>Upcycling Idea:</strong> ${info.upcycle}`;
+    document.getElementById("toxic").innerHTML = `☠️ <strong>Toxic Alert:</strong> ${info.toxic}`;
+    document.getElementById("eco").innerHTML = `⭐ <strong>Eco Score:</strong> ${info.eco}`;
+    details.style.display = "grid";
+  }
+});
 
-document.getElementById("darkModeToggle").onclick = () => {
-  document.body.classList.toggle("dark-mode");
-};
-
-document.getElementById("suggestBtn").onclick = () => {
-  alert("💡 Coming soon: Personalized eco suggestions, challenges & tips!");
+// Dummy Eco Suggestions & Bin Locator
+document.getElementById("ecoBtn").onclick = () => {
+  alert("🌿 Tip: Carry your own bottle. Avoid single-use plastic!");
 };
 
 document.getElementById("locateBtn").onclick = () => {
-  alert("📍 Locate feature coming: We’ll help you find nearby bins and drop points!");
+  window.open("https://www.google.com/maps/search/recycle+bin+near+me", "_blank");
 };
