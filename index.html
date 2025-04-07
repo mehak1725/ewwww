@@ -8,10 +8,9 @@
 </head>
 <body>
   <div class="container">
-    <h1 class="title">♻️ Welcome to <span class="highlight">EWWWW</span></h1>
+    <h1>♻️ Welcome to <span class="highlight">EWWWW</span></h1>
     <p class="tagline">Eco Way to a Waste-Free World Wide Web</p>
 
-    <input type="file" id="imageInput" accept="image/*" style="display:none" />
     <div class="buttons">
       <button id="scanBtn">📸 Scan Waste</button>
       <button id="suggestBtn">💡 Get Eco Suggestions</button>
@@ -19,33 +18,18 @@
       <button id="darkModeToggle">🌙 Toggle Dark Mode</button>
     </div>
 
-    <img id="preview" src="https://i.imgur.com/G99rKwq.png" class="banana" />
+    <img id="preview" src="banana.png" alt="Waste Image" />
 
-    <div id="resultContainer">
-      <div id="resultText"></div>
+    <div id="result" class="result">
+      <p><strong>📱 Waste Type:</strong> <span id="wasteType">Electronic Waste (e.g., Phone)</span></p>
+      <p><strong>♻️ Decomposition Time:</strong> <span id="decomposeTime">1 million years</span></p>
+      <p><strong>✅ Suggestion:</strong> <span id="suggestion">Recycle via certified e-waste centers.</span></p>
+      <p><strong>🌱 Eco Tip:</strong> <span id="ecoTip">Never throw electronics in the trash — they leak toxic chemicals!</span></p>
+    </div>
 
-      <div class="info-grid">
-        <div class="info-card" onclick="toggleCard(this)">
-          <h3>♻️ How to Dispose</h3>
-          <p>Locate certified e-waste centers or drop-off points. Never throw electronics in the trash!</p>
-          <div class="extra">You can find nearby centers on your city's waste management portal.</div>
-        </div>
-        <div class="info-card" onclick="toggleCard(this)">
-          <h3>🎨 Upcycling Idea</h3>
-          <p>Turn old phones into security cams or music players!</p>
-          <div class="extra">Apps like AlfredCamera let you turn old phones into home security cams easily.</div>
-        </div>
-        <div class="info-card" onclick="toggleCard(this)">
-          <h3>☠️ Toxic Alert</h3>
-          <p>Electronics contain mercury, lead, and cadmium — harmful to soil and water.</p>
-          <div class="extra">These can cause serious health and environmental hazards if not disposed properly.</div>
-        </div>
-        <div class="info-card" onclick="toggleCard(this)">
-          <h3>⭐ Eco Score</h3>
-          <p>Saving 1 phone = Preventing 55kg of CO₂ emissions!</p>
-          <div class="extra">Reducing e-waste also reduces the need for mining raw materials like lithium and cobalt.</div>
-        </div>
-      </div>
+    <h2>➡️ More Info</h2>
+    <div class="info-cards" id="infoCards">
+      <!-- Cards will load here -->
     </div>
   </div>
 
