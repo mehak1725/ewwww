@@ -8,11 +8,11 @@
 </head>
 <body>
   <div class="container">
-    <h1 class="title">♻️ Welcome to EWWWW</h1>
+    <h1 class="title">♻️ Welcome to <span>EWWWW</span></h1>
     <p class="tagline">Eco Way to a Waste-Free World Wide Web</p>
 
     <input type="file" id="imageInput" accept="image/*" style="display:none" />
-    
+
     <div class="buttons">
       <button id="scanBtn">📸 Scan Waste</button>
       <button id="suggestBtn">💡 Get Eco Suggestions</button>
@@ -20,21 +20,18 @@
       <button id="darkModeToggle">🌙 Toggle Dark Mode</button>
     </div>
 
-    <img id="preview" />
+    <div class="card" id="scanScreen">
+      <img id="preview" class="preview" />
+      <div id="result" class="resultBox">🧠 Waiting for image...</div>
+    </div>
 
-    <div id="resultContainer">
-      <div id="resultPage1" class="resultPage">
-        <div id="result" class="resultText">📷 Image preview will appear here</div>
-        <button class="nextBtn">➡️ More Info</button>
-      </div>
-      <div id="resultPage2" class="resultPage hidden">
-        <div class="extraInfo">
-          <p>🧪 Chemical Impact: Leaches heavy metals into soil</p>
-          <p>📦 Better Option: Donate or trade-in old devices</p>
-          <p>🌍 Fun Fact: Recycling 1M laptops saves energy equal to power for 3,500 homes/year!</p>
-        </div>
-        <button class="backBtn">⬅️ Back</button>
-      </div>
+    <div class="card hidden" id="detailsScreen">
+      <h2 id="wasteType"></h2>
+      <p id="decomposeTime"></p>
+      <p id="suggestion"></p>
+      <p id="ecoTip"></p>
+      <button id="moreInfo">➡️ More Info</button>
+      <button id="backBtn">⬅️ Back</button>
     </div>
   </div>
 
