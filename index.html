@@ -9,25 +9,30 @@
 <body>
   <div class="container">
     <h1>♻️ Welcome to EWWWW</h1>
-    <p><em>Eco Way to a Waste-Free World Wide Web</em></p>
-    <div class="buttons">
-      <button id="scanBtn">📸 Scan Waste</button>
-      <button id="ecoBtn">💡 Get Eco Suggestions</button>
-      <button id="locateBtn">📍 Locate Recycle Bins</button>
-      <button id="toggleModeBtn">🌙 Toggle Dark Mode</button>
-    </div>
-    <input type="file" id="fileInput" style="display: none" accept="image/*"/>
-    <div id="imagePreview" class="image-preview"></div>
-    <div id="result" class="result-text"></div>
+    <p><i>Eco Way to a Waste-Free World Wide Web</i></p>
 
-    <!-- 🔥 4 Waste Info Cards -->
-    <div id="details" class="info-cards" style="display: none">
-      <div class="card" id="dispose">♻️ <strong>How to Dispose:</strong></div>
-      <div class="card" id="upcycle">🎨 <strong>Upcycling Idea:</strong></div>
-      <div class="card" id="toxic">☠️ <strong>Toxic Alert:</strong></div>
-      <div class="card" id="eco">⭐ <strong>Eco Score:</strong></div>
+    <div class="button-group">
+      <button id="scanBtn">📸 Scan Waste</button>
+      <button id="suggestBtn">💡 Get Eco Suggestions</button>
+      <button id="binBtn">📍 Locate Recycle Bins</button>
+      <button id="modeToggle">🌙 Toggle Dark Mode</button>
+    </div>
+
+    <input type="file" id="imageInput" accept="image/*" hidden />
+    <div class="image-preview" id="imagePreviewContainer">
+      <img id="previewImage" src="" alt="Preview Image" />
+    </div>
+
+    <div class="result" id="wasteTypeResult"></div>
+
+    <div class="info-cards">
+      <div class="card" id="disposeBox"></div>
+      <div class="card" id="upcycleBox"></div>
+      <div class="card" id="toxicBox"></div>
+      <div class="card" id="scoreBox"></div>
     </div>
   </div>
+
   <script src="script.js"></script>
 </body>
 </html>
