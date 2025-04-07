@@ -1,45 +1,56 @@
+// Click to open file picker
 document.getElementById("scanBtn").onclick = () => {
   document.getElementById("imageInput").click();
 };
 
-document.getElementById("imageInput").onchange = async (event) => {
+// Handle image upload
+document.getElementById("imageInput").onchange = (event) => {
   const file = event.target.files[0];
   if (!file) return;
 
+  // Show preview
   const preview = document.getElementById("preview");
   preview.src = URL.createObjectURL(file);
   preview.style.display = "block";
 
-  const formData = new FormData();
-  formData.append("inputs", file);
+  // Show scanning message
+  document.getElementById("result").innerHTML = "🧠 Scanning...";
 
-  document.getElementById("result").innerText = "🧠 Scanning...";
+  // Simulate AI scan
+  setTimeout(() => {
+    const fileName = file.name.toLowerCase();
+    let result = "";
 
-  try {
-    const tokenRes = await fetch("/api/token");
-    const { token } = await tokenRes.json();
-
-    const response = await fetch("https://api-inference.huggingface.co/models/google/vit-base-patch16-224", {
-      method: "POST",
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-      body: formData,
-    });
-
-    const result = await response.json();
-    console.log("🔍 API Response:", result);
-
-    if (Array.isArray(result) && result.length > 0 && result[0].label) {
-      document.getElementById("result").innerText = `📦 AI thinks it's: ${result[0].label}`;
+    if (fileName.includes("plastic")) {
+      result = `
+        🧴 Waste Type: <strong>Plastic Bottle</strong><br>
+        ♻️ Decomposition Time: <strong>450 years</strong><br>
+        ✅ Suggestion: Use refillable bottles instead of single-use plastics.<br>
+        🌱 Eco Tip: Join plastic collection drives or upcycle with DIY crafts.
+      `;
+    } else if (fileName.includes("banana")) {
+      result = `
+        🍌 Waste Type: <strong>Banana Peel</strong><br>
+        ♻️ Decomposition Time: <strong>2–5 weeks</strong><br>
+        ✅ Suggestion: Compost it to make nutrient-rich soil.<br>
+        🌱 Eco Tip: Mix peels with dry leaves for a balanced compost.
+      `;
+    } else if (fileName.includes("phone") || fileName.includes("ewaste")) {
+      result = `
+        📱 Waste Type: <strong>Electronic Waste (e.g., Phone)</strong><br>
+        ♻️ Decomposition Time: <strong>1 million years</strong><br>
+        ✅ Suggestion: Recycle via certified e-waste centers.<br>
+        🌱 Eco Tip: Never throw electronics in the trash — they leak toxic chemicals!
+      `;
     } else {
-      document.getElementById("result").innerText = `❌ Could not identify item`;
+      result = `
+        ❓ Unknown Waste Type<br>
+        Please upload an image named like "plastic", "banana", or "phone" to test.
+      `;
     }
 
-  } catch (error) {
-    console.error("⚠️ Error scanning image", error);
-    document.getElementById("result").innerText = `⚠️ Error scanning image`;
-  }
+    document.getElementById("result").innerHTML = result;
+  }, 1500); // fake scan delay
 };
 
 // Dark mode toggle
@@ -47,7 +58,7 @@ document.getElementById("darkModeToggle").onclick = () => {
   document.body.classList.toggle("dark-mode");
 };
 
-// Placeholder alerts
+// Coming soon placeholders
 document.getElementById("suggestBtn").onclick = () => {
   alert("💡 Coming soon: Eco Suggestions based on scanned item!");
 };
