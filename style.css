@@ -1,116 +1,94 @@
 body {
-  font-family: 'Segoe UI', sans-serif;
   margin: 0;
-  padding: 20px;
-  background-color: #e6ffe6; /* Light green */
+  padding: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background-color: #e6ffe6;
   color: #003300;
-  text-align: center;
-  overflow-x: hidden;
   background-image: url('https://www.transparenttextures.com/patterns/green-dust-and-scratches.png');
-  background-size: 200px 200px;
-  background-repeat: repeat;
-}
-
-.highlight {
-  color: #00994d;
-}
-
-.button-group {
-  margin: 20px 0;
-}
-
-.button-group button {
-  margin: 10px;
-  padding: 12px 20px;
-  font-size: 16px;
-  border: none;
-  border-radius: 10px;
-  background-color: #00994d;
-  color: white;
-  cursor: pointer;
-  transition: transform 0.3s ease, background-color 0.3s;
-}
-
-.button-group button:hover {
-  background-color: #006633;
-  transform: scale(1.05);
-}
-
-#imagePreview img {
-  margin: 20px auto;
-  max-width: 300px;
-  border-radius: 20px;
-  box-shadow: 0 0 20px #66ffcc;
-  display: block;
-  animation: fadeIn 1s ease;
-}
-
-.info-area {
-  margin-top: 20px;
-  font-size: 18px;
-  animation: fadeIn 1s ease;
-}
-
-.cards {
-  display: none;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 20px;
-  margin-top: 30px;
-}
-
-.card {
-  background-color: #ccffcc;
-  color: #003300;
-  border-radius: 15px;
-  padding: 20px;
-  width: 250px;
-  box-shadow: 0 0 10px rgba(0,0,0,0.2);
-  text-align: left;
-  transition: transform 0.3s;
-}
-
-.card:hover {
-  transform: translateY(-5px);
+  background-size: cover;
+  transition: all 0.4s ease;
 }
 
 .dark-mode {
-  background-color: #003300;
-  color: #e6ffe6;
-  background-image: url('https://www.transparenttextures.com/patterns/black-linen.png');
-  background-size: 200px 200px;
-  background-repeat: repeat;
+  background-color: #002200;
+  color: #ccffcc;
+  background-image: url('https://www.transparenttextures.com/patterns/dark-wood.png');
 }
 
-.dark-mode .card {
-  background-color: #336633;
-  color: #ffffff;
+.container {
+  max-width: 800px;
+  margin: auto;
+  padding: 2rem;
+  text-align: center;
 }
 
-/* Animations */
+h1 {
+  font-size: 2.5rem;
+  margin-bottom: 0.5rem;
+  animation: fadeIn 1s ease-out;
+}
+
+.tagline {
+  font-size: 1.2rem;
+  margin-bottom: 1.5rem;
+  color: #444;
+}
+
+.buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+  margin-bottom: 2rem;
+}
+
+button {
+  background-color: #66bb6a;
+  color: white;
+  border: none;
+  padding: 12px 18px;
+  font-size: 1rem;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+button:hover {
+  transform: scale(1.05);
+  background-color: #4caf50;
+}
+
+.image-wrapper {
+  margin: 2rem 0;
+}
+
+#preview {
+  max-width: 60%;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 128, 0, 0.3);
+  animation: fadeIn 1s ease-out;
+}
+
+.result-card {
+  background-color: #ffffffcc;
+  padding: 20px;
+  border-radius: 16px;
+  box-shadow: 0 8px 20px rgba(0, 100, 0, 0.2);
+  text-align: left;
+  line-height: 1.6;
+  animation: slideUp 1s ease-out;
+}
+
+.dark-mode .result-card {
+  background-color: #113311cc;
+}
+
 @keyframes fadeIn {
-  from { opacity: 0; transform: translateY(20px); }
-  to   { opacity: 1; transform: translateY(0); }
+  from {opacity: 0;}
+  to {opacity: 1;}
 }
 
-.fade-in {
-  animation: fadeIn 1s ease forwards;
-  opacity: 0;
-}
-
-.delay-1 { animation-delay: 0.3s; }
-.delay-2 { animation-delay: 0.6s; }
-.delay-3 { animation-delay: 0.9s; }
-
-.card-animated {
-  opacity: 0;
-  transform: scale(0.9);
-  animation: fadeInCard 0.5s forwards ease;
-}
-
-@keyframes fadeInCard {
-  to {
-    opacity: 1;
-    transform: scale(1);
-  }
+@keyframes slideUp {
+  from {transform: translateY(40px); opacity: 0;}
+  to {transform: translateY(0); opacity: 1;}
 }
