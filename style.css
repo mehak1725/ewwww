@@ -1,108 +1,89 @@
 body {
-  margin: 0;
   font-family: 'Segoe UI', sans-serif;
-  transition: background 0.5s, color 0.5s;
-  background: #e8f5e9; /* light green */
-  color: #1b5e20;
-  overflow-x: hidden;
+  margin: 0;
+  padding: 0;
+  background: #e6ffe6;
+  transition: background 0.5s;
+  background-image: url('https://www.transparenttextures.com/patterns/green-dust-and-scratches.png');
 }
 
 .dark-mode {
-  background: #1b5e20; /* dark green */
-  color: #e8f5e9;
+  background: #003300;
+  color: white;
+  background-image: url('https://www.transparenttextures.com/patterns/dark-denim-3.png');
 }
 
 .container {
   text-align: center;
-  padding: 2rem;
-  animation: fadeIn 1.5s ease-in-out;
-}
-
-h1.title {
-  font-size: 2.5rem;
-  margin-bottom: 0.3rem;
-  animation: slideInTop 1s ease-out;
+  padding: 30px;
 }
 
 .tagline {
-  font-size: 1.2rem;
-  margin-bottom: 2rem;
-  animation: slideInTop 1.5s ease-out;
+  font-style: italic;
+  margin-bottom: 20px;
 }
 
 .buttons {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 1rem;
-  margin-bottom: 1.5rem;
+  gap: 12px;
+  margin-bottom: 20px;
 }
 
 button {
-  background-color: #66bb6a;
-  border: none;
-  padding: 0.8rem 1.2rem;
+  padding: 12px 20px;
   border-radius: 30px;
-  font-size: 1rem;
+  border: none;
+  background-color: #4CAF50;
+  color: white;
+  font-weight: bold;
   cursor: pointer;
-  transition: transform 0.2s ease, background 0.4s;
+  transition: transform 0.3s, background 0.3s;
 }
 
 button:hover {
-  background-color: #43a047;
+  background-color: #45a049;
   transform: scale(1.05);
 }
 
+.preview-section {
+  margin-top: 20px;
+}
+
 #preview {
-  display: block;
-  max-width: 200px;
-  margin: 1rem auto;
+  max-width: 300px;
   border-radius: 15px;
-  box-shadow: 0 0 20px rgba(0,0,0,0.2);
-  animation: pulse 2s infinite;
+  display: none;
+  margin-top: 10px;
 }
 
-#result {
-  font-size: 1.3rem;
-  margin-top: 1rem;
-  font-weight: bold;
-}
-
-.card-container {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 1rem;
-  padding: 1rem;
-  margin-top: 1.5rem;
+.result-box {
+  margin-top: 25px;
+  animation: fadeIn 1s ease-in;
 }
 
 .card {
-  background-color: #a5d6a7;
-  border-radius: 15px;
-  padding: 1rem;
-  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  background: rgba(255, 255, 255, 0.8);
+  margin: 15px auto;
+  padding: 15px;
+  border-radius: 20px;
+  max-width: 500px;
+  box-shadow: 0 0 10px #ccc;
   transition: transform 0.3s;
 }
 
 .card:hover {
-  transform: scale(1.05);
+  transform: scale(1.02);
 }
 
 .dark-mode .card {
-  background-color: #2e7d32;
+  background: rgba(0, 50, 0, 0.7);
+  color: white;
+  box-shadow: 0 0 10px #111;
 }
 
 @keyframes fadeIn {
-  from { opacity: 0; transform: translateY(30px); }
+  from { opacity: 0; transform: translateY(20px); }
   to { opacity: 1; transform: translateY(0); }
-}
-
-@keyframes slideInTop {
-  from { opacity: 0; transform: translateY(-40px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-@keyframes pulse {
-  0%, 100% { transform: scale(1); }
-  50% { transform: scale(1.03); }
 }
