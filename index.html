@@ -1,58 +1,39 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>EWWWW - Eco Waste Scanner</title>
-  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <div class="container">
     <h1>♻️ Welcome to EWWWW</h1>
-    <p><em>Eco Way to a Waste-Free World Wide Web</em></p>
+    <p class="subtitle">Eco Way to a Waste-Free World Wide Web</p>
 
-    <div class="button-group">
-      <button id="scanBtn">📸 Scan Waste</button>
-      <button id="ecoBtn">💡 Get Eco Suggestions</button>
-      <button id="binBtn">📍 Locate Recycle Bins</button>
-      <button id="darkModeBtn">🌙 Toggle Dark Mode</button>
+    <div class="buttons">
+      <button onclick="document.getElementById('wasteInput').click()">📸 Scan Waste</button>
+      <button onclick="showPopup('eco')">💡 Get Eco Suggestions</button>
+      <button onclick="showPopup('bins')">📍 Locate Recycle Bins</button>
+      <button onclick="toggleDarkMode()">🌙 Toggle Dark Mode</button>
+      <input type="file" id="wasteInput" accept="image/*" style="display:none" onchange="scanWaste()">
     </div>
 
-    <input type="file" id="imageInput" accept="image/*" style="display:none;" />
-
-    <div id="imagePreview">
-      <img id="wasteImage" src="" alt="Preview will appear here" />
+    <div id="preview-container">
+      <img id="preview" alt="Preview will appear here">
     </div>
 
-    <div id="wasteInfo">
-      <h2>🍌 Organic Waste (e.g., Banana Peel)</h2>
-      <div class="card-grid">
-        <div class="info-card" onclick="showPopup('♻️ How to Dispose', 'Compost it at home or use a local composting facility.')">
-          <h3>♻️ How to Dispose:</h3>
-          <p>Compost it at home or use a local composting facility.</p>
-        </div>
-        <div class="info-card" onclick="showPopup('🎨 Upcycling Idea', 'Use peels for natural fertilizer or shine leaves!')">
-          <h3>🎨 Upcycling Idea:</h3>
-          <p>Use peels for natural fertilizer or shine leaves!</p>
-        </div>
-        <div class="info-card" onclick="showPopup('☠️ Toxic Alert', 'Can attract pests if not disposed properly.')">
-          <h3>☠️ Toxic Alert:</h3>
-          <p>Can attract pests if not disposed properly.</p>
-        </div>
-        <div class="info-card" onclick="showPopup('⭐ Eco Score', 'Composting reduces methane emissions and enriches soil!')">
-          <h3>⭐ Eco Score:</h3>
-          <p>Composting reduces methane emissions and enriches soil!</p>
-        </div>
-      </div>
+    <div id="result" class="result">
+      <!-- Dynamic result content -->
     </div>
   </div>
 
-  <!-- Animated Popup -->
+  <!-- Popup -->
   <div id="popup" class="popup">
     <div class="popup-content">
-      <span id="popup-title"></span>
-      <p id="popup-text"></p>
-      <button onclick="closePopup()">Close</button>
+      <span class="close-btn" onclick="closePopup()">✖</span>
+      <h3 id="popup-title"></h3>
+      <p id="popup-message"></p>
     </div>
   </div>
 
