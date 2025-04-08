@@ -1,139 +1,125 @@
 body {
-  font-family: "Segoe UI", sans-serif;
   margin: 0;
-  background: #121212;
-  color: white;
+  font-family: 'Segoe UI', sans-serif;
+  background-color: #1c1c1c;
+  color: #fff;
+  text-align: center;
   transition: background 0.4s, color 0.4s;
 }
 
-body.light-mode {
-  background: #f4f4f4;
-  color: #222;
-}
-
 .container {
-  text-align: center;
-  padding: 40px 20px;
+  padding: 2rem;
 }
 
-h1 {
-  font-size: 2.5rem;
-  margin-bottom: 10px;
-}
-
-.buttons {
-  margin: 20px 0;
+.button-group {
+  margin-top: 1rem;
 }
 
 button {
-  margin: 10px;
-  padding: 12px 20px;
-  font-size: 1rem;
-  border: none;
-  border-radius: 8px;
-  background: #27ae60;
+  background-color: #28a745;
   color: white;
+  border: none;
+  margin: 0.5rem;
+  padding: 0.7rem 1.2rem;
+  border-radius: 8px;
   cursor: pointer;
-  transition: transform 0.2s, background 0.3s;
+  font-size: 1rem;
+  transition: transform 0.2s ease;
 }
 
 button:hover {
-  background: #219150;
+  background-color: #218838;
   transform: scale(1.05);
 }
 
 #wasteImage {
-  margin: 20px auto;
-  width: 200px;
-  height: auto;
+  max-width: 200px;
+  margin-top: 1rem;
   border-radius: 10px;
+  display: none;
 }
 
 #wasteInfo {
-  margin-top: 30px;
+  display: none;
+  margin-top: 2rem;
 }
 
-.info-cards {
+.card-grid {
   display: flex;
-  justify-content: center;
   flex-wrap: wrap;
-  gap: 15px;
-  margin-top: 20px;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 1rem;
 }
 
 .info-card {
-  background: #2c2c2c;
-  color: white;
-  padding: 15px;
+  background: #2d2d2d;
+  padding: 1rem;
   border-radius: 12px;
-  width: 200px;
+  width: 250px;
   cursor: pointer;
-  transition: transform 0.3s, background 0.3s;
+  transition: transform 0.2s ease, background 0.3s;
 }
 
 .info-card:hover {
-  transform: translateY(-5px);
   background: #3a3a3a;
+  transform: scale(1.03);
 }
 
-.light-mode .info-card {
-  background: #eaeaea;
-  color: #111;
-}
-
-.light-mode .info-card:hover {
-  background: #d5d5d5;
-}
-
-.popup-container {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: rgba(0, 0, 0, 0.7);
+.popup {
   display: none;
-  align-items: center;
+  position: fixed;
+  top: 0; left: 0;
+  width: 100vw; height: 100vh;
+  background-color: rgba(0, 0, 0, 0.7);
   justify-content: center;
-  z-index: 999;
+  align-items: center;
+  z-index: 1000;
 }
 
-.popup-card {
-  background: #1e1e1e;
-  padding: 30px;
-  width: 400px;
-  max-width: 90%;
-  border-radius: 15px;
+.popup-content {
+  background: #202020;
   color: white;
-  text-align: left;
-  animation: slideUp 0.4s ease-out;
-  position: relative;
+  padding: 2rem;
+  border-radius: 12px;
+  max-width: 500px;
+  text-align: center;
+  animation: popupFade 0.4s ease-out;
 }
 
-.popup-card h3 {
-  margin-top: 0;
-}
-
-.popup-card p {
-  margin-top: 10px;
-  line-height: 1.6;
-}
-
-.close-btn {
-  position: absolute;
-  top: 12px;
-  right: 15px;
-  font-size: 1.5rem;
+.popup-content button {
+  background-color: #ffa726;
+  margin-top: 1rem;
+  padding: 0.6rem 1.2rem;
+  border: none;
+  border-radius: 8px;
   cursor: pointer;
+  color: black;
 }
 
-@keyframes slideUp {
+@keyframes popupFade {
   from {
-    transform: translateY(100px);
+    transform: scale(0.7);
     opacity: 0;
   }
   to {
-    transform: translateY(0);
+    transform: scale(1);
     opacity: 1;
   }
+}
+
+/* Light Mode */
+body.light {
+  background-color: #f1f1f1;
+  color: #111;
+}
+
+body.light .info-card {
+  background: #e4e4e4;
+  color: #111;
+}
+
+body.light .popup-content {
+  background: white;
+  color: black;
 }
