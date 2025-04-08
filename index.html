@@ -1,39 +1,40 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>EWWWW - Eco Waste Scanner</title>
-  <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>EWWWW - Waste Scanner</title>
+  <link rel="stylesheet" href="style.css"/>
 </head>
 <body>
   <div class="container">
     <h1>♻️ Welcome to EWWWW</h1>
-    <p class="subtitle">Eco Way to a Waste-Free World Wide Web</p>
+    <p>Eco Way to a Waste-Free World Wide Web</p>
 
     <div class="buttons">
-      <button onclick="document.getElementById('wasteInput').click()">📸 Scan Waste</button>
-      <button onclick="showPopup('eco')">💡 Get Eco Suggestions</button>
-      <button onclick="showPopup('bins')">📍 Locate Recycle Bins</button>
+      <input type="file" id="imageInput" accept="image/*" hidden>
+      <button onclick="document.getElementById('imageInput').click()">📸 Scan Waste</button>
+      <button onclick="showEcoSuggestions()">💡 Get Eco Suggestions</button>
+      <button onclick="showBinLocations()">📍 Locate Recycle Bins</button>
       <button onclick="toggleDarkMode()">🌙 Toggle Dark Mode</button>
-      <input type="file" id="wasteInput" accept="image/*" style="display:none" onchange="scanWaste()">
     </div>
 
-    <div id="preview-container">
-      <img id="preview" alt="Preview will appear here">
+    <div id="imagePreviewContainer">
+      <img id="previewImage" src="" alt="Preview will appear here" />
     </div>
 
-    <div id="result" class="result">
-      <!-- Dynamic result content -->
-    </div>
-  </div>
+    <div id="wasteType" class="waste-type-title"></div>
 
-  <!-- Popup -->
-  <div id="popup" class="popup">
-    <div class="popup-content">
+    <div class="info-cards">
+      <div class="card" onclick="showPopup('dispose')">♻️ How to Dispose</div>
+      <div class="card" onclick="showPopup('upcycle')">🎨 Upcycling Idea</div>
+      <div class="card" onclick="showPopup('toxic')">☠️ Toxic Alert</div>
+      <div class="card" onclick="showPopup('eco')">⭐ Eco Score</div>
+    </div>
+
+    <div class="popup" id="popup">
       <span class="close-btn" onclick="closePopup()">✖</span>
-      <h3 id="popup-title"></h3>
-      <p id="popup-message"></p>
+      <div id="popupContent"></div>
     </div>
   </div>
 
