@@ -1,97 +1,139 @@
 body {
+  font-family: "Segoe UI", sans-serif;
   margin: 0;
-  font-family: 'Segoe UI', sans-serif;
-  background-color: #f5f5f5;
-  color: #333;
-  text-align: center;
-  transition: background 0.3s, color 0.3s;
+  background: #121212;
+  color: white;
+  transition: background 0.4s, color 0.4s;
 }
 
-header {
-  padding: 2rem 1rem;
+body.light-mode {
+  background: #f4f4f4;
+  color: #222;
+}
+
+.container {
+  text-align: center;
+  padding: 40px 20px;
 }
 
 h1 {
-  margin: 0;
-  font-size: 2rem;
+  font-size: 2.5rem;
+  margin-bottom: 10px;
 }
 
 .buttons {
-  margin-top: 1rem;
+  margin: 20px 0;
 }
 
 button {
-  background: #34c759;
-  color: white;
+  margin: 10px;
+  padding: 12px 20px;
+  font-size: 1rem;
   border: none;
-  padding: 0.6rem 1rem;
-  margin: 0.5rem;
   border-radius: 8px;
-  cursor: pointer;
-  transition: background 0.3s;
-}
-
-button:hover {
-  background: #28a745;
-}
-
-main {
-  margin: 2rem 1rem;
-}
-
-#imagePreviewContainer {
-  margin: 1.5rem auto;
-  width: 200px;
-  height: 200px;
-}
-
-#previewImage {
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-  border-radius: 10px;
-}
-
-#wasteResult {
-  margin-top: 2rem;
-}
-
-.info-cards {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 1rem;
-  margin-top: 1rem;
-}
-
-.card {
-  background: #e0e0e0;
-  padding: 1rem;
-  border-radius: 10px;
-  width: 220px;
+  background: #27ae60;
+  color: white;
   cursor: pointer;
   transition: transform 0.2s, background 0.3s;
 }
 
-.card:hover {
-  background: #d4f5dc;
-  transform: translateY(-4px);
+button:hover {
+  background: #219150;
+  transform: scale(1.05);
 }
 
-.hidden {
-  display: none;
+#wasteImage {
+  margin: 20px auto;
+  width: 200px;
+  height: auto;
+  border-radius: 10px;
 }
 
-.dark-mode {
-  background-color: #1c1c1c;
+#wasteInfo {
+  margin-top: 30px;
+}
+
+.info-cards {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 15px;
+  margin-top: 20px;
+}
+
+.info-card {
+  background: #2c2c2c;
   color: white;
+  padding: 15px;
+  border-radius: 12px;
+  width: 200px;
+  cursor: pointer;
+  transition: transform 0.3s, background 0.3s;
 }
 
-.dark-mode .card {
-  background: #2a2a2a;
-  color: #fff;
+.info-card:hover {
+  transform: translateY(-5px);
+  background: #3a3a3a;
 }
 
-.dark-mode .card:hover {
-  background: #3c3c3c;
+.light-mode .info-card {
+  background: #eaeaea;
+  color: #111;
+}
+
+.light-mode .info-card:hover {
+  background: #d5d5d5;
+}
+
+.popup-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.7);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 999;
+}
+
+.popup-card {
+  background: #1e1e1e;
+  padding: 30px;
+  width: 400px;
+  max-width: 90%;
+  border-radius: 15px;
+  color: white;
+  text-align: left;
+  animation: slideUp 0.4s ease-out;
+  position: relative;
+}
+
+.popup-card h3 {
+  margin-top: 0;
+}
+
+.popup-card p {
+  margin-top: 10px;
+  line-height: 1.6;
+}
+
+.close-btn {
+  position: absolute;
+  top: 12px;
+  right: 15px;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(100px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
 }
