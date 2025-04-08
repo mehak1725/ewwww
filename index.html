@@ -7,35 +7,44 @@
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <div class="container">
+  <header>
     <h1>♻️ Welcome to EWWWW</h1>
-    <p>Eco Way to a Waste-Free World Wide Web</p>
-
-    <div class="button-group">
-      <button id="scanBtn">📸 Scan Waste</button>
-      <button id="ecoBtn">💡 Get Eco Suggestions</button>
-      <button id="locateBtn">📍 Locate Recycle Bins</button>
-      <button id="toggleDark">🌙 Toggle Dark Mode</button>
+    <p><em>Eco Way to a Waste-Free World Wide Web</em></p>
+    <div class="buttons">
+      <button onclick="scanWaste()">📸 Scan Waste</button>
+      <button onclick="getSuggestions()">💡 Get Eco Suggestions</button>
+      <button onclick="locateBins()">📍 Locate Recycle Bins</button>
+      <button onclick="toggleDarkMode()">🌙 Toggle Dark Mode</button>
     </div>
+  </header>
 
-    <div id="previewSection">
-      <img id="previewImage" src="https://cdn-icons-png.flaticon.com/512/590/590685.png" alt="Preview Image" />
-      <h3 id="wasteType">🍌 Organic Waste (e.g., Banana Peel)</h3>
+  <main>
+    <input type="file" id="imageUpload" accept="image/*" onchange="handleImageUpload(event)" hidden />
+    <div id="imagePreviewContainer">
+      <img id="previewImage" src="" alt="Preview Image" />
     </div>
-
-    <div id="infoCards" class="info-cards">
-      <!-- Info boxes will be added by script.js -->
+    <div id="wasteResult" class="hidden">
+      <h2 id="wasteType">🍌 Organic Waste (e.g., Banana Peel)</h2>
+      <div class="info-cards">
+        <div class="card" onclick="showDetail('dispose')">
+          ♻️ <strong>How to Dispose:</strong>
+          <p id="disposeText">Compost it at home or use a local composting facility.</p>
+        </div>
+        <div class="card" onclick="showDetail('upcycle')">
+          🎨 <strong>Upcycling Idea:</strong>
+          <p id="upcycleText">Use peels for natural fertilizer or shine leaves!</p>
+        </div>
+        <div class="card" onclick="showDetail('toxic')">
+          ☠️ <strong>Toxic Alert:</strong>
+          <p id="toxicText">Can attract pests if not disposed properly.</p>
+        </div>
+        <div class="card" onclick="showDetail('eco')">
+          ⭐ <strong>Eco Score:</strong>
+          <p id="ecoText">Composting reduces methane emissions and enriches soil!</p>
+        </div>
+      </div>
     </div>
-  </div>
-
-  <!-- Modal for info details -->
-  <div id="modal" class="modal">
-    <div class="modal-content">
-      <span class="close-btn">&times;</span>
-      <h2 id="modalTitle"></h2>
-      <p id="modalContent"></p>
-    </div>
-  </div>
+  </main>
 
   <script src="script.js"></script>
 </body>
