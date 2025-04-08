@@ -6,45 +6,53 @@
   <title>EWWWW - Eco Waste Scanner</title>
   <link rel="stylesheet" href="style.css" />
 </head>
-<body>
-  <header>
+<body class="dark-mode">
+  <div class="container">
     <h1>♻️ Welcome to EWWWW</h1>
     <p><em>Eco Way to a Waste-Free World Wide Web</em></p>
-    <div class="buttons">
-      <button onclick="scanWaste()">📸 Scan Waste</button>
-      <button onclick="getSuggestions()">💡 Get Eco Suggestions</button>
-      <button onclick="locateBins()">📍 Locate Recycle Bins</button>
-      <button onclick="toggleDarkMode()">🌙 Toggle Dark Mode</button>
-    </div>
-  </header>
 
-  <main>
-    <input type="file" id="imageUpload" accept="image/*" onchange="handleImageUpload(event)" hidden />
-    <div id="imagePreviewContainer">
-      <img id="previewImage" src="" alt="Preview Image" />
+    <div class="buttons">
+      <button id="scanBtn">📸 Scan Waste</button>
+      <button id="suggestBtn">💡 Get Eco Suggestions</button>
+      <button id="locateBtn">📍 Locate Recycle Bins</button>
+      <button id="toggleModeBtn">🌙 Toggle Dark Mode</button>
     </div>
-    <div id="wasteResult" class="hidden">
-      <h2 id="wasteType">🍌 Organic Waste (e.g., Banana Peel)</h2>
+
+    <div id="imagePreview">
+      <img id="wasteImage" src="" alt="" style="display: none;" />
+    </div>
+
+    <div id="wasteInfo" style="display: none;">
+      <h2 id="wasteTitle">🍌 Organic Waste (e.g., Banana Peel)</h2>
       <div class="info-cards">
-        <div class="card" onclick="showDetail('dispose')">
+        <div class="info-card" onclick="openPopup('dispose')">
           ♻️ <strong>How to Dispose:</strong>
-          <p id="disposeText">Compost it at home or use a local composting facility.</p>
+          <p>Compost it at home or use a local composting facility.</p>
         </div>
-        <div class="card" onclick="showDetail('upcycle')">
+        <div class="info-card" onclick="openPopup('upcycle')">
           🎨 <strong>Upcycling Idea:</strong>
-          <p id="upcycleText">Use peels for natural fertilizer or shine leaves!</p>
+          <p>Use peels for natural fertilizer or shine leaves!</p>
         </div>
-        <div class="card" onclick="showDetail('toxic')">
+        <div class="info-card" onclick="openPopup('toxic')">
           ☠️ <strong>Toxic Alert:</strong>
-          <p id="toxicText">Can attract pests if not disposed properly.</p>
+          <p>Can attract pests if not disposed properly.</p>
         </div>
-        <div class="card" onclick="showDetail('eco')">
+        <div class="info-card" onclick="openPopup('eco')">
           ⭐ <strong>Eco Score:</strong>
-          <p id="ecoText">Composting reduces methane emissions and enriches soil!</p>
+          <p>Composting reduces methane emissions and enriches soil!</p>
         </div>
       </div>
     </div>
-  </main>
+  </div>
+
+  <!-- Popup Modal -->
+  <div id="popupContainer" class="popup-container">
+    <div class="popup-card">
+      <span class="close-btn" onclick="closePopup()">×</span>
+      <h3 id="popupTitle"></h3>
+      <p id="popupText"></p>
+    </div>
+  </div>
 
   <script src="script.js"></script>
 </body>
