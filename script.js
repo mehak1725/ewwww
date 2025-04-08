@@ -1,122 +1,72 @@
-const wasteData = {
-  plastic: {
-    type: "📦 Plastic Waste (e.g., Bottle)",
-    details: [
-      {
-        title: "♻️ How to Dispose:",
-        content: "Rinse and put in a plastic recycle bin."
-      },
-      {
-        title: "🎨 Upcycling Idea:",
-        content: "Make planters or pen stands from plastic bottles!"
-      },
-      {
-        title: "☠️ Toxic Alert:",
-        content: "Plastics pollute oceans and harm wildlife."
-      },
-      {
-        title: "⭐ Eco Score:",
-        content: "Recycling 1 bottle saves energy to power a lightbulb for 3 hours!"
-      }
-    ]
+document.getElementById("toggleDark").addEventListener("click", () => {
+  document.body.classList.toggle("dark-mode");
+});
+
+// MOCKED scan result (replace with real API integration if needed)
+const mockWasteType = "Organic Waste (e.g., Banana Peel)";
+const mockImage =
+  "https://cdn-icons-png.flaticon.com/512/590/590685.png";
+const mockDetails = [
+  {
+    title: "♻️ How to Dispose:",
+    content: "Compost it at home or use a local composting facility.",
   },
-  electronic: {
-    type: "📱 Electronic Waste (e.g., Phone)",
-    details: [
-      {
-        title: "♻️ How to Dispose:",
-        content: "Locate certified e-waste centers. Never trash electronics!"
-      },
-      {
-        title: "🎨 Upcycling Idea:",
-        content: "Convert old phones to security cams or media players."
-      },
-      {
-        title: "☠️ Toxic Alert:",
-        content: "Electronics contain mercury and lead — toxic to soil and water."
-      },
-      {
-        title: "⭐ Eco Score:",
-        content: "Saving 1 phone = prevents 55kg CO₂ emissions!"
-      }
-    ]
+  {
+    title: "🎨 Upcycling Idea:",
+    content: "Use peels for natural fertilizer or shine leaves!",
   },
-  organic: {
-    type: "🍌 Organic Waste (e.g., Banana Peel)",
-    details: [
-      {
-        title: "♻️ How to Dispose:",
-        content: "Compost it at home or use a local composting facility."
-      },
-      {
-        title: "🎨 Upcycling Idea:",
-        content: "Use peels for natural fertilizer or shine leaves!"
-      },
-      {
-        title: "☠️ Toxic Alert:",
-        content: "Can attract pests if not disposed properly."
-      },
-      {
-        title: "⭐ Eco Score:",
-        content: "Composting reduces methane emissions and enriches soil!"
-      }
-    ]
-  }
-};
+  {
+    title: "☠️ Toxic Alert:",
+    content: "Can attract pests if not disposed properly.",
+  },
+  {
+    title: "⭐ Eco Score:",
+    content: "Composting reduces methane emissions and enriches soil!",
+  },
+];
 
-const imageInput = document.getElementById("imageInput");
-const preview = document.getElementById("preview");
-const resultType = document.getElementById("resultType");
-const infoCards = document.getElementById("infoCards");
+// Scan button (mock result)
+document.getElementById("scanBtn").addEventListener("click", () => {
+  document.getElementById("previewImage").src = mockImage;
+  document.getElementById("wasteType").innerText = `🍌 ${mockWasteType}`;
+  displayInfoCards(mockDetails);
+});
 
-// Simulate AI label by checking file name
-function detectWasteType(filename) {
-  filename = filename.toLowerCase();
-  if (filename.includes("plastic")) return "plastic";
-  if (filename.includes("phone") || filename.includes("electronic")) return "electronic";
-  if (filename.includes("banana") || filename.includes("organic")) return "organic";
-  return "plastic"; // default
-}
-
-document.getElementById("scanBtn").onclick = () => {
-  imageInput.click();
-};
-
-imageInput.onchange = (e) => {
-  const file = e.target.files[0];
-  if (!file) return;
-
-  preview.src = URL.createObjectURL(file);
-  preview.style.display = "block";
-
-  const wasteType = detectWasteType(file.name);
-  const data = wasteData[wasteType];
-
-  resultType.innerText = data.type;
-  infoCards.innerHTML = "";
-
-  data.details.forEach((item) => {
+// Display info cards
+function displayInfoCards(details) {
+  const container = document.getElementById("infoCards");
+  container.innerHTML = "";
+  details.forEach((item) => {
     const card = document.createElement("div");
     card.className = "card";
     card.innerHTML = `<strong>${item.title}</strong><p>${item.content}</p>`;
-    card.onclick = () => {
-      alert(`${item.title}\n\n${item.content}`);
-    };
-    infoCards.appendChild(card);
+    card.addEventListener("click", () => openModal(item.title, item.content));
+    container.appendChild(card);
   });
+}
+
+// Modal functionality
+function openModal(title, content) {
+  document.getElementById("modalTitle").innerText = title;
+  document.getElementById("modalContent").innerText = content;
+  document.getElementById("modal").style.display = "block";
+}
+
+document.querySelector(".close-btn").onclick = () => {
+  document.getElementById("modal").style.display = "none";
 };
 
-// Dark mode
-document.getElementById("darkModeToggle").onclick = () => {
-  document.body.classList.toggle("dark-mode");
+window.onclick = (event) => {
+  if (event.target === document.getElementById("modal")) {
+    document.getElementById("modal").style.display = "none";
+  }
 };
 
-// Suggestion alert
-document.getElementById("suggestBtn").onclick = () => {
-  alert("🌿 Get Eco Suggestions feature coming soon! Personalized tips & actions based on waste type.");
-};
+// Optional buttons (non-functional in mock version)
+document.getElementById("ecoBtn").addEventListener("click", () => {
+  alert("💡 Eco Tips coming soon!");
+});
 
-// Locate bins alert
-document.getElementById("locateBtn").onclick = () => {
-  alert("📍 Locate Recycle Bins feature coming soon! You'll find centers near your area.");
-};
+document.getElementById("locateBtn").addEventListener("click", () => {
+  alert("📍 Recycle bin locator coming soon!");
+});
