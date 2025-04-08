@@ -3,37 +3,29 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>EWWWW - Eco Waste Scanner</title>
+  <title>EWWWW - Eco Way to a Waste-Free World Wide Web</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
   <div class="container">
     <h1>♻️ Welcome to EWWWW</h1>
-    <p><i>Eco Way to a Waste-Free World Wide Web</i></p>
+    <p class="tagline">Eco Way to a Waste-Free World Wide Web</p>
 
-    <div class="button-group">
+    <input type="file" id="imageInput" accept="image/*" style="display:none" />
+    
+    <div class="buttons">
       <button id="scanBtn">📸 Scan Waste</button>
       <button id="suggestBtn">💡 Get Eco Suggestions</button>
-      <button id="binBtn">📍 Locate Recycle Bins</button>
-      <button id="modeToggle">🌙 Toggle Dark Mode</button>
+      <button id="locateBtn">📍 Locate Recycle Bins</button>
+      <button id="darkModeToggle">🌙 Toggle Dark Mode</button>
     </div>
 
-    <input type="file" id="imageInput" accept="image/*" hidden />
-    <div class="image-preview" id="imagePreviewContainer">
-      <img id="previewImage" src="" alt="Preview Image" />
-    </div>
+    <img id="preview" alt="Preview Image" />
 
-    <div class="result" id="wasteTypeResult"></div>
-
-    <div class="info-cards">
-      <div class="card" id="disposeBox"></div>
-      <div class="card" id="upcycleBox"></div>
-      <div class="card" id="toxicBox"></div>
-      <div class="card" id="scoreBox"></div>
-    </div>
+    <div id="resultType"></div>
+    <div id="infoCards" class="cards-container"></div>
   </div>
 
-  <!-- ✅ JS at end -->
   <script src="script.js"></script>
 </body>
 </html>
