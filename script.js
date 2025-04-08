@@ -1,77 +1,58 @@
-function handleImageUpload(event) {
-  const file = event.target.files[0];
-  if (file) {
-    const preview = document.getElementById("previewImage");
-    preview.src = URL.createObjectURL(file);
-    preview.onload = () => URL.revokeObjectURL(preview.src);
-    document.getElementById("wasteResult").classList.remove("hidden");
+document.getElementById("scanBtn").addEventListener("click", () => {
+  const image = document.getElementById("wasteImage");
+  image.src = "https://cdn-icons-png.flaticon.com/512/7687/7687038.png"; // banana preview
+  image.style.display = "block";
+  document.getElementById("wasteInfo").style.display = "block";
+});
 
-    // Simulate detection result for demo
-    showWasteDetails("organic");
-  }
+document.getElementById("toggleModeBtn").addEventListener("click", () => {
+  document.body.classList.toggle("light-mode");
+});
+
+function openPopup(type) {
+  const popup = document.getElementById("popupContainer");
+  const title = document.getElementById("popupTitle");
+  const text = document.getElementById("popupText");
+
+  const content = {
+    dispose: {
+      title: "♻️ How to Dispose",
+      text: `Organic waste should be composted either at home using a compost bin or through a local composting program.
+It breaks down into nutrient-rich soil over time, reducing the need for chemical fertilizers.
+Always keep compost moist and turn it regularly for best results.
+Avoid adding meat, dairy, or oily foods to compost.
+Using compost helps your garden thrive and reduces landfill use.`
+    },
+    upcycle: {
+      title: "🎨 Upcycling Idea",
+      text: `Banana peels can be used to polish leather or plant leaves.
+You can also blend them into garden fertilizer or dry and powder them for potassium-rich soil supplements.
+Creative uses include banana peel-infused water as plant tonic or even DIY insect repellent!
+Let your creativity turn waste into value.`
+    },
+    toxic: {
+      title: "☠️ Toxic Alert",
+      text: `If not disposed properly, organic waste attracts pests like flies, rats, and ants.
+It emits methane — a greenhouse gas — in landfills.
+Avoid sealing organic waste in plastic bags.
+Use breathable compost bags or open bins.
+Never dump food waste in regular garbage if composting is available.`
+    },
+    eco: {
+      title: "🌟 Eco Score",
+      text: `Organic waste is highly recyclable via composting.
+It helps close the loop in nature’s nutrient cycle.
+Reducing organic waste in landfills lowers methane emissions significantly.
+Composting supports sustainable agriculture and urban farming.
+Your small action makes a massive eco impact.`
+    }
+  };
+
+  title.innerText = content[type].title;
+  text.innerText = content[type].text;
+  popup.style.display = "flex";
 }
 
-function scanWaste() {
-  document.getElementById("imageUpload").click();
-}
-
-function getSuggestions() {
-  alert("💡 Use our suggestions to reduce, reuse, and recycle!");
-}
-
-function locateBins() {
-  alert("📍 Use Google Maps or apps like 'Recycle Nearby' to find recycling bins.");
-}
-
-function toggleDarkMode() {
-  document.body.classList.toggle("dark-mode");
-}
-
-function showDetail(type) {
-  let title = "";
-  let content = "";
-
-  if (type === "dispose") {
-    title = "♻️ How to Dispose:";
-    content = document.getElementById("disposeText").innerText;
-  } else if (type === "upcycle") {
-    title = "🎨 Upcycling Idea:";
-    content = document.getElementById("upcycleText").innerText;
-  } else if (type === "toxic") {
-    title = "☠️ Toxic Alert:";
-    content = document.getElementById("toxicText").innerText;
-  } else if (type === "eco") {
-    title = "⭐ Eco Score:";
-    content = document.getElementById("ecoText").innerText;
-  }
-
-  alert(`${title}\n\n${content}`);
-}
-
-function showWasteDetails(type) {
-  const wasteType = document.getElementById("wasteType");
-  const dispose = document.getElementById("disposeText");
-  const upcycle = document.getElementById("upcycleText");
-  const toxic = document.getElementById("toxicText");
-  const eco = document.getElementById("ecoText");
-
-  if (type === "organic") {
-    wasteType.innerHTML = "🍌 Organic Waste (e.g., Banana Peel)";
-    dispose.innerText = "Compost it at home or use a local composting facility.";
-    upcycle.innerText = "Use peels for natural fertilizer or shine leaves!";
-    toxic.innerText = "Can attract pests if not disposed properly.";
-    eco.innerText = "Composting reduces methane emissions and enriches soil!";
-  } else if (type === "plastic") {
-    wasteType.innerHTML = "📦 Plastic Waste (e.g., Bottle)";
-    dispose.innerText = "Rinse and put in a plastic recycle bin.";
-    upcycle.innerText = "Make planters or pen stands!";
-    toxic.innerText = "Plastics pollute oceans and harm wildlife.";
-    eco.innerText = "Recycling 1 bottle saves enough energy to power a bulb for 3 hours.";
-  } else if (type === "electronic") {
-    wasteType.innerHTML = "💻 Electronic Waste (e.g., Old Phone)";
-    dispose.innerText = "Drop off at certified e-waste centers.";
-    upcycle.innerText = "Use old circuits in DIY tech projects.";
-    toxic.innerText = "E-waste contains hazardous chemicals.";
-    eco.innerText = "Recycling e-waste recovers precious metals and reduces mining.";
-  }
+function closePopup() {
+  document.getElementById("popupContainer").style.display = "none";
 }
