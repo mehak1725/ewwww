@@ -1,125 +1,106 @@
 body {
   margin: 0;
   font-family: 'Segoe UI', sans-serif;
-  background-color: #1c1c1c;
-  color: #fff;
+  background-color: #1f1f1f;
+  color: white;
   text-align: center;
-  transition: background 0.4s, color 0.4s;
 }
 
 .container {
-  padding: 2rem;
+  padding: 30px 20px;
 }
 
-.button-group {
-  margin-top: 1rem;
+.subtitle {
+  font-style: italic;
+  margin-bottom: 30px;
+}
+
+.buttons {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 15px;
+  margin-bottom: 20px;
 }
 
 button {
   background-color: #28a745;
-  color: white;
   border: none;
-  margin: 0.5rem;
-  padding: 0.7rem 1.2rem;
+  color: white;
+  padding: 12px 18px;
+  font-size: 16px;
   border-radius: 8px;
   cursor: pointer;
-  font-size: 1rem;
-  transition: transform 0.2s ease;
+  transition: background 0.3s;
 }
 
 button:hover {
   background-color: #218838;
-  transform: scale(1.05);
 }
 
-#wasteImage {
-  max-width: 200px;
-  margin-top: 1rem;
+#preview-container {
+  margin-top: 25px;
+}
+
+#preview {
+  max-width: 250px;
   border-radius: 10px;
-  display: none;
+  margin: 20px auto;
+  display: block;
 }
 
-#wasteInfo {
-  display: none;
-  margin-top: 2rem;
+.result {
+  margin-top: 25px;
+  font-size: 18px;
 }
 
-.card-grid {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 1rem;
-  margin-top: 1rem;
-}
-
-.info-card {
-  background: #2d2d2d;
-  padding: 1rem;
+.card {
+  background-color: #2c2c2c;
+  padding: 20px;
   border-radius: 12px;
-  width: 250px;
+  margin: 12px auto;
+  width: 90%;
+  max-width: 500px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.3);
+  transition: transform 0.3s ease;
   cursor: pointer;
-  transition: transform 0.2s ease, background 0.3s;
 }
-
-.info-card:hover {
-  background: #3a3a3a;
-  transform: scale(1.03);
+.card:hover {
+  transform: scale(1.02);
 }
 
 .popup {
-  display: none;
   position: fixed;
-  top: 0; left: 0;
-  width: 100vw; height: 100vh;
-  background-color: rgba(0, 0, 0, 0.7);
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(10,10,10,0.7);
+  display: none;
   justify-content: center;
   align-items: center;
-  z-index: 1000;
+  z-index: 999;
 }
 
 .popup-content {
-  background: #202020;
+  background-color: #2d2d2d;
   color: white;
-  padding: 2rem;
-  border-radius: 12px;
-  max-width: 500px;
-  text-align: center;
-  animation: popupFade 0.4s ease-out;
+  padding: 25px;
+  border-radius: 10px;
+  width: 90%;
+  max-width: 450px;
+  animation: fadeIn 0.4s ease-in-out;
+  text-align: left;
 }
 
-.popup-content button {
-  background-color: #ffa726;
-  margin-top: 1rem;
-  padding: 0.6rem 1.2rem;
-  border: none;
-  border-radius: 8px;
+@keyframes fadeIn {
+  from {opacity: 0; transform: scale(0.9);}
+  to {opacity: 1; transform: scale(1);}
+}
+
+.close-btn {
+  float: right;
   cursor: pointer;
-  color: black;
-}
-
-@keyframes popupFade {
-  from {
-    transform: scale(0.7);
-    opacity: 0;
-  }
-  to {
-    transform: scale(1);
-    opacity: 1;
-  }
-}
-
-/* Light Mode */
-body.light {
-  background-color: #f1f1f1;
-  color: #111;
-}
-
-body.light .info-card {
-  background: #e4e4e4;
-  color: #111;
-}
-
-body.light .popup-content {
-  background: white;
-  color: black;
+  font-size: 20px;
+  color: #ff7f7f;
 }
